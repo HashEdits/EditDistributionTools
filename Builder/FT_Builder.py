@@ -4,6 +4,21 @@ import shutil
 import subprocess
 import PyInstaller.__main__
 
+def print_ascii_art():
+    ascii_art = r"""
+ ____  ____    ____  _  _  __  __    ____  ____  ____ 
+(  __)(_  _)  (  _ \/ )( \(  )(  )  (    \(  __)(  _ \
+ ) _)   )(     ) _ () \/ ( )( / (_/\ ) D ( ) _)  )   /
+(__)   (__)   (____/\____/(__)\____/(____/(____)(__\_)
+    """
+    credits = r"""
+                 Made By Hash - v1.0
+
+
+    """
+    print(ascii_art)
+    print(credits)
+
 def get_assets_relative_path(file_path):
     asset_folder = "Assets"
     index = file_path.rfind(asset_folder)
@@ -45,6 +60,9 @@ def modify_python_patcher_script(original_model_path, original_meta_file_path, d
 
 
 def main():
+
+    print_ascii_art()
+
     # Get the dropped file path as input
     OriginalFBX = input("Drag and drop the original FBX here (make sure it's in between quotation marks): ")
     OriginalFBX = OriginalFBX.strip('"')
