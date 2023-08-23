@@ -44,10 +44,15 @@ If used please credit my socials and this GitHub Page
 There is an extra theorical directory to show you what to expect from the builder if you input
 
 "WhereverOnYourProjectIsLocatedOnYourDrive\ProjectName\Assets\CreatorName\AvatarName\fbx\MyCoolAvatar.fbx"
+
 "WhereverOnYourProjectIsLocatedOnYourDrive\ProjectName\Assets\YourCustomDir\NameOfTheModel\fbx\MyCoolAvatar_FT.fbx"
+
 YourCustomDir
+
 NameOfTheModel
+
 MyModelDiff
+
 MyModelMetaDiff
 
 ## Distribute a face tracked avatar 👨‍🏫
