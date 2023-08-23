@@ -3,7 +3,7 @@
 
 This is a simple tool to automate the ease the distribution and creation of face tracked avatars for VRChat.
 
-![ ](https://github.com/HashEdits/Face-Tracking-Patcher/blob/main/Thumbnail.png)
+![ ](https://cdn.discordapp.com/attachments/337986548664500236/1143948164232126656/Thumbnail_Face_tracking_patcher_Git_Hub.png)
 
 Due to how curent 3D model files are set up there isn't a way to share shape-keys without being tied to a mesh. Making the process of sharing such files rather tedious or to be left to the context of a commision where sharing mesh data is in general allowed between the commisioner and the artist.
 
