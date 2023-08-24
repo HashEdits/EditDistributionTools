@@ -63,6 +63,8 @@ There is an extra theorical directory to show you what to expect from the builde
 
 you'll find an exemple readme in **Description&ReadMeExemples** that you can bundle with your avatar's package to let the customer know what to do with it.
 There's also an exemple description there.
+in summary any of the following:
+`/*AVATAR NAME*/`,`/*AVATAR AUTHOR*/`, `/*StoreLink*/`, `/*PACKAGE NAME*/`, `/*DIR PATCHER*/`, `/*DIR PREFAB*/` will be remplaced by something that makes sense in for your project
 
 
 ## Distribute a face tracked avatar 👨‍🏫
