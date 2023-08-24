@@ -105,12 +105,14 @@ def main():
 
     # Get the required info to proceed
 
-    OriginalFBX = input("Drag and drop the original FBX here: ")
+#   OriginalFBX = input("Drag and drop the original FBX here: ")                Until we find a way to build the builder
+    OriginalFBX = input("Please input the path to the original FBX: ")
     if OriginalFBX.startswith('"') and OriginalFBX.endswith('"'):
         OriginalFBX = OriginalFBX.strip('"')
 
 
-    FaceTrackedFBX = input("Drag and drop the face tracked FBX here: ")
+#   FaceTrackedFBX = input("Drag and drop the face tracked FBX here: ")
+    FaceTrackedFBX = input("Please input the path to the Face tracked FBX: ")
     if FaceTrackedFBX.startswith('"') and FaceTrackedFBX.endswith('"'):
         FaceTrackedFBX = FaceTrackedFBX.strip('"')
 

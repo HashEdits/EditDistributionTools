@@ -33,7 +33,7 @@ If used please credit my socials and this GitHub Page
   - (optional) put all of your descriptions and readme in a folder to ease the creation of pages
   
 - Open your python IDLE
-
+(the windows taskbar is your friend)
 - Click File -> Open
 
 - Navigate to where you have downloaded the repo -> FT_Builder
@@ -49,8 +49,8 @@ There is an extra theorical directory to show you what to expect from the builde
 
 - WhereverOnYourProjectIsLocatedOnYourDrive\ProjectName\Assets\YourCustomDir\NameOfTheModel\fbx\MyCoolAvatar_FT.fbx
 
-- YourCustomDir
-
+- NameOfYourCustomFolder
+(something unique to keep all of your files in your addon)
 - NameOfTheModel
 
 - Path\To\My\Cool\Descriptions&ReadMe
