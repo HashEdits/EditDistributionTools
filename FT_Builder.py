@@ -229,16 +229,17 @@ def main():
     os.rmdir(source_dir)
     print("Files moved to the 'data' folder.")
 
-    #remplacing descriptions and readme placeholders
-    replace_placeholders_in_files_in_directory(
-        DescriptionDir,
-        NameCustomAvatarDir,
-        CreatorName,
-        BoothPage,
-        PackageName,
-        'Assets' + NameCustomDir + NameCustomAvatarDir + 'patcher',
-        'Assets' + NameCustomDir + NameCustomAvatarDir + 'prefab',
-    )
+    if DescriptionDir != '':
+        #remplacing descriptions and readme placeholders
+        replace_placeholders_in_files_in_directory(
+            DescriptionDir,
+            NameCustomAvatarDir,
+            CreatorName,
+            BoothPage,
+            PackageName,
+            'Assets' + NameCustomDir + NameCustomAvatarDir + 'patcher',
+            'Assets' + NameCustomDir + NameCustomAvatarDir + 'prefab',
+        )
 
 
 if __name__ == "__main__":

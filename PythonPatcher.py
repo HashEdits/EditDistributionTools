@@ -54,13 +54,13 @@ def patch_model(original_model_path, original_meta_file_path, diff_file_path, me
 
     shutil.copy(original_model, original_model + '.bak')
     shutil.copy(original_meta_file, original_meta_file + '.bak')
-    shutil.copy(original_model, os.path.join(backup_dir, f'{output_name}.fbx'))
-    shutil.copy(original_meta_file, os.path.join(backup_dir, f'{output_name}.fbx.meta'))
+    shutil.copy(original_model, os.path.join(backup_dir, f'{output_name}'))
+    shutil.copy(original_meta_file, os.path.join(backup_dir, f'{output_name}.meta'))
 
     patcher_exe = os.path.join(os.path.dirname(__file__), 'data', 'hpatchz.exe')
 
-    patched_model = os.path.join(backup_dir, f'{output_name}.fbx')
-    patched_meta_file = os.path.join(backup_dir, f'{output_name}.fbx.meta')
+    patched_model = os.path.join(backup_dir, f'{output_name}')
+    patched_meta_file = os.path.join(backup_dir, f'{output_name}.meta')
 
     if subprocess.run([patcher_exe, '-f', patched_model, diff_file, patched_model]).returncode != 0:
         print("Error occurred during patching process for model.")
