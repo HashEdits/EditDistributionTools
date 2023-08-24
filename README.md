@@ -57,7 +57,7 @@ There is an extra theorical directory to show you what to expect from the builde
 
 - AvatarCreatorName
 
-- Creator.CoolStoreFront.com/item/MyCoolAvatar
+- [Creator.CoolStoreFront.com/item/MyCoolAvatar](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
 
 - NameOfThePackageCustomersOwn
 
@@ -112,5 +112,7 @@ Somehow running into issues with that, it ends up restarting the script uppon wa
 ## Credits 📕
 
 **[HDiffPatch](https://github.com/sisong/HDiffPatch)**
+
 **[Nimble Design System Icons](https://iconduck.com/sets/nimble-design-system-icons)**
+
 **[Auto py to exe](https://pypi.org/project/auto-py-to-exe/)**
