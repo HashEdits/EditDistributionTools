@@ -104,7 +104,7 @@ will be remplaced by something that makes sense in for your project
 
 ## Build FT_Builder
 
-Somehow running into issues with that, it ends up restarting the script uppon wanting to run pyinstaller from the script (line 121), if any of you have an idea how to build the daim thing I'd be glad to merge it to the main branch 🤗
+Somehow running into issues with that, it ends up restarting the script uppon wanting to run pyinstaller from the script (line 181), if any of you have an idea how to build the daim thing I'd be glad to merge it to the main branch 🤗
 
 
   
