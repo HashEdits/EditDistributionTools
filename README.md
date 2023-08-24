@@ -20,15 +20,13 @@ If used please credit my socials and this GitHub Page
 
 [Python](https://www.python.org/downloads/)
 
-> pip install auto-py-to-exe
-
 [Py Intsaller](https://pypi.org/project/auto-py-to-exe/)
 
 
 
 >pip install pyinstaller
 
-## How to use 😎
+# How to use 😎
   
 - Open your python IDLE
 
@@ -40,7 +38,7 @@ If used please credit my socials and this GitHub Page
 
 - Follow the instructions
 
-## Exemple 📑
+# Exemple 📑
 There is an extra theorical directory to show you what to expect from the builder if you input
 
 "WhereverOnYourProjectIsLocatedOnYourDrive\ProjectName\Assets\CreatorName\AvatarName\fbx\MyCoolAvatar.fbx"
@@ -55,7 +53,7 @@ MyModelDiff
 
 MyModelMetaDiff
 
-## Distribute a face tracked avatar 👨‍🏫
+# Distribute a face tracked avatar 👨‍🏫
 - Copy your custom generated directory earlier and drag and drop it in the Assets folder of your unity project
 
 - Make sure that your avatar has the required parameters, FX and additive controllers set up for VRCFaceTracking.
@@ -86,14 +84,14 @@ MyModelMetaDiff
 (make sure to always check the creator's licence agreement on attachements)
   
 
-## Build FT_Builder
+# Build FT_Builder
 
 Somehow running into issues with that, it ends up restarting the script uppon wanting to run pyinstaller from the script (line 121), if any of you have an idea how to build the daim thing I'd be glad to merge it to the main branch 🤗
 
 
   
 
-## Credits 📕
+# Credits 📕
 
 **[HDiffPatch](https://github.com/sisong/HDiffPatch)**
 
