@@ -21,8 +21,6 @@ If used please credit my socials and this GitHub Page
 
 [Python](https://www.python.org/downloads/)
 
-> pip install auto-py-to-exe
-
 [Py Intsaller](https://pypi.org/project/auto-py-to-exe/)
 
 
