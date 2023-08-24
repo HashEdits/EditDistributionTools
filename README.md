@@ -32,7 +32,7 @@ If used please credit my socials and this GitHub Page
 
 - Click File -> Open
 
-- Navigate to where you have downloaded the repo -> FT_Builder
+- Navigate to where you have downloaded the latest release -> FT_Builder
 
 - Press F5
 
