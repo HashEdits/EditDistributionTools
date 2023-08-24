@@ -11,14 +11,17 @@ Due to how curent 3D model files are set up there isn't a way to share shape-key
 After being involved in the scene it was clear that the previous mainstream methods were sub optimal: overwriting the original model and requiering the user to navigate to a subfolder unknown in advanced.
 
 My piece of software let's you build a patcher with ease, saving you time and letting your customers have a reliable path to navigate to. Building a reliable way for them to interact with your products.
+It also now supports adding a directory with your different localized descriptions and readme to make the process of putting the avatar on the storefront much less painfull
 
 I am going to be using my tool from now on to build my Face Tracking Add-ons avaliable on my [Booth](https://hashedits.booth.pm/) and [Ko-Fi](https://ko-fi.com/hashedits/shop) shops
 
 If used please credit my socials and this GitHub Page
 
-# Pre-requisites 🤓
+## Pre-requisites 🤓
 
 [Python](https://www.python.org/downloads/)
+
+> pip install auto-py-to-exe
 
 [Py Intsaller](https://pypi.org/project/auto-py-to-exe/)
 
@@ -26,34 +29,45 @@ If used please credit my socials and this GitHub Page
 
 >pip install pyinstaller
 
-# How to use 😎
+## How to use 😎
+  
+  - Make sure both your model and your face tracked model are set up in a unity project
+  - (optional) put all of your descriptions and readme in a folder to ease the creation of pages
   
 - Open your python IDLE
 
 - Click File -> Open
 
-- Navigate to where you have downloaded the latest release -> FT_Builder
+- Navigate to where you have downloaded the repo -> FT_Builder
 
 - Press F5
 
 - Follow the instructions
 
-# Exemple 📑
-There is an extra theorical directory to show you what to expect from the builder if you input
+## Exemple 📑
+There is an extra theorical directory to show you what to expect from the builder if you input:
 
-"WhereverOnYourProjectIsLocatedOnYourDrive\ProjectName\Assets\CreatorName\AvatarName\fbx\MyCoolAvatar.fbx"
+- WhereverOnYourProjectIsLocatedOnYourDrive\ProjectName\Assets\CreatorName\AvatarName\fbx\MyCoolAvatar.fbx
 
-"WhereverOnYourProjectIsLocatedOnYourDrive\ProjectName\Assets\YourCustomDir\NameOfTheModel\fbx\MyCoolAvatar_FT.fbx"
+- WhereverOnYourProjectIsLocatedOnYourDrive\ProjectName\Assets\YourCustomDir\NameOfTheModel\fbx\MyCoolAvatar_FT.fbx
 
-YourCustomDir
+- YourCustomDir
 
-NameOfTheModel
+- NameOfTheModel
 
-MyModelDiff
+- Path\To\My\Cool\Descriptions&ReadMe
 
-MyModelMetaDiff
+- AvatarCreatorName
 
-# Distribute a face tracked avatar 👨‍🏫
+- Creator.CoolStoreFront.com/item/MyCoolAvatar
+
+- NameOfThePackageCustomersOwn
+
+you'll find an exemple readme in **Description&ReadMeExemples** that you can bundle with your avatar's package to let the customer know what to do with it.
+There's also an exemple description there.
+
+
+## Distribute a face tracked avatar 👨‍🏫
 - Copy your custom generated directory earlier and drag and drop it in the Assets folder of your unity project
 
 - Make sure that your avatar has the required parameters, FX and additive controllers set up for VRCFaceTracking.
@@ -82,21 +96,18 @@ MyModelMetaDiff
 
 - You're ready to sell your custom face tracked avatar!
 (make sure to always check the creator's licence agreement on attachements)
+
   
 
-# Build FT_Builder
+## Build FT_Builder
 
 Somehow running into issues with that, it ends up restarting the script uppon wanting to run pyinstaller from the script (line 121), if any of you have an idea how to build the daim thing I'd be glad to merge it to the main branch 🤗
 
 
   
 
-# Credits 📕
+## Credits 📕
 
 **[HDiffPatch](https://github.com/sisong/HDiffPatch)**
-
-
 **[Nimble Design System Icons](https://iconduck.com/sets/nimble-design-system-icons)**
-
-
 **[Auto py to exe](https://pypi.org/project/auto-py-to-exe/)**
