@@ -134,11 +134,13 @@ def main():
         
 
     NameCustomAvatarDir = input("Please input the name of the avatar's custom directory: ")
-    while os.path.isfile(NameCustomDir) or os.path.isdir(NameCustomDir):
-        NameCustomDir = input("Please input a name for your avatar's custom directory that isn't a file or a folder: ")
+    while os.path.isfile(NameCustomAvatarDir) or os.path.isdir(NameCustomAvatarDir):
+        NameCustomAvatarDir = input("Please input a name for your avatar's custom directory that isn't a file or a folder: ")
 
     NameFBXDiffFile = NameCustomAvatarDir + 'Diff'
     NameMetaDiffFile = NameCustomAvatarDir + 'Meta' + 'Diff'
+
+    
     DescriptionDir = input("Please input the directory of your descriptions and readme files (will skip if left empty): ")
     
     if DescriptionDir != '':
