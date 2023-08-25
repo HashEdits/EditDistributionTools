@@ -109,24 +109,44 @@ def main():
     OriginalFBX = input("Please input the path to the original FBX: ")
     if OriginalFBX.startswith('"') and OriginalFBX.endswith('"'):
         OriginalFBX = OriginalFBX.strip('"')
-
+    
+    while not os.path.isfile(OriginalFBX) :
+        OriginalFBX = input("Please input the path to an original fbx file that exists")
+        if OriginalFBX.startswith('"') and OriginalFBX.endswith('"'):
+            OriginalFBX = OriginalFBX.strip('"')
+        
+    
 
 #   FaceTrackedFBX = input("Drag and drop the face tracked FBX here: ")
     FaceTrackedFBX = input("Please input the path to the Face tracked FBX: ")
     if FaceTrackedFBX.startswith('"') and FaceTrackedFBX.endswith('"'):
         FaceTrackedFBX = FaceTrackedFBX.strip('"')
+    while not os.path.isfile(FaceTrackedFBX) :
+        FaceTrackedFBX = input("Please input the path to an original fbx file that exists")
+        if FaceTrackedFBX.startswith('"') and FaceTrackedFBX.endswith('"'):
+            FaceTrackedFBX = FaceTrackedFBX.strip('"')
 
 
     NameCustomDir = input("Please input the name of your custom directory: ")
+
+    while os.path.isfile(NameCustomDir) or os.path.isdir(NameCustomDir):
+        NameCustomDir = input("Please input a name for your custom directory that isn't a file or a folder: ")
+        
+
     NameCustomAvatarDir = input("Please input the name of the avatar's custom directory: ")
+    while os.path.isfile(NameCustomDir) or os.path.isdir(NameCustomDir):
+        NameCustomDir = input("Please input a name for your avatar's custom directory that isn't a file or a folder: ")
+
     NameFBXDiffFile = NameCustomAvatarDir + 'Diff'
     NameMetaDiffFile = NameCustomAvatarDir + 'Meta' + 'Diff'
     DescriptionDir = input("Please input the directory of your descriptions and readme files (will skip if left empty): ")
     
-    
-    if DescriptionDir.startswith('"') and DescriptionDir.endswith('"'):
-        DescriptionDir = DescriptionDir.strip('"')
     if DescriptionDir != '':
+        if DescriptionDir.startswith('"') and DescriptionDir.endswith('"'):
+            DescriptionDir = DescriptionDir.strip('"')
+        while not os.path.isdir(DescriptionDir):
+            DescriptionDir = input("Please input a valid directory with your descriptions and readme files (will not skip because you failed your first failed the first time bozo): ")
+            
         CreatorName = input("Please input the name of the creator: ")
         BoothPage = input("Please input the page of the avatar: ")
         PackageName = input("Please input the name of the package that users will have: ")
