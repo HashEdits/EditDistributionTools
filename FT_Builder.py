@@ -137,8 +137,6 @@ def main():
     while os.path.isfile(NameCustomAvatarDir) or os.path.isdir(NameCustomAvatarDir):
         NameCustomAvatarDir = input("Please input a name for your avatar's custom directory that isn't a file or a folder: ")
 
-    NameFBXDiffFile = NameCustomAvatarDir + 'Diff'
-    NameMetaDiffFile = NameCustomAvatarDir + 'Meta' + 'Diff'
 
     
     DescriptionDir = input("Please input the directory of your descriptions and readme files (will skip if left empty): ")
@@ -168,6 +166,8 @@ def main():
     hpatchz = os.path.join(os.path.dirname(__file__), 'hdiff', 'hpatchz.exe')
 
     #location of the diff files
+    NameFBXDiffFile = NameCustomAvatarDir + 'Diff'
+    NameMetaDiffFile = NameCustomAvatarDir + 'Meta' + 'Diff'
     FBXDiffFile = os.path.abspath(os.path.join(os.path.dirname(__file__), NameCustomDir, NameCustomAvatarDir, 'patcher', 'data', 'DiffFiles', NameFBXDiffFile+".hdiff"))
     MetaDiffFile = os.path.abspath(os.path.join(os.path.dirname(__file__), NameCustomDir, NameCustomAvatarDir, 'patcher', 'data', 'DiffFiles', NameMetaDiffFile+".hdiff"))
 
@@ -253,14 +253,17 @@ def main():
 
     if DescriptionDir != '':
         #remplacing descriptions and readme placeholders
+        DirPatcher = os.path.join('Assets', NameCustomDir, NameCustomAvatarDir, 'patcher')
+        DirPrefab = os.path.join('Assets', NameCustomDir, NameCustomAvatarDir, 'prefab')
+
         replace_placeholders_in_files_in_directory(
             DescriptionDir,
             NameCustomAvatarDir,
             CreatorName,
             BoothPage,
             PackageName,
-            'Assets' + NameCustomDir + NameCustomAvatarDir + 'patcher',
-            'Assets' + NameCustomDir + NameCustomAvatarDir + 'prefab',
+            DirPatcher,
+            DirPrefab,
         )
 
 
