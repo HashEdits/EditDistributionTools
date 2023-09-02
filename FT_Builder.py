@@ -17,7 +17,7 @@ def print_ascii_art():
 (__)   (__)   (____/\____/(__)\____/(____/(____)(__\_)
     """
     credits = r"""
-                 Made By Hash - v1.0
+                 Made By Hash - v1.2
 
 
     """
@@ -213,7 +213,6 @@ def main():
     PyInstaller.__main__.run([
     "! "+NameCustomAvatarDir+"Patcher.py",
     '--onedir',
-
     '--distpath', buildDestination,
     '--icon='+ os.path.abspath(os.path.join(os.path.dirname(__file__), 'YourCoolIcon.ico'))
     ])
