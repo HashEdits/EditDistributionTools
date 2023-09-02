@@ -31,6 +31,25 @@ def resource_path(relative_path):
 
     return os.path.join(base_path, relative_path)
 
+def delete_files_in_directory(directory_path):
+    try:
+        # Check if the directory exists
+        if os.path.exists(directory_path):
+            # Iterate over all files and subdirectories in the directory
+            for root, dirs, files in os.walk(directory_path, topdown=False):
+                for file_name in files:
+                    file_path = os.path.join(root, file_name)
+                    os.remove(file_path)  # Delete the file
+                for dir_name in dirs:
+                    dir_path = os.path.join(root, dir_name)
+                    shutil.rmtree(dir_path)  # Delete the subdirectory and its contents
+            print(f"OSC Config cleared.")
+        else:
+            print(f"no OSC config found")
+    except Exception as e:
+        print(f"An error occurred while clearing OSC conifg: {e}")
+
+
 def patch_model(original_model_path, original_meta_file_path, diff_file_path, meta_diff_file_path, output_name):
     script_directory = resource_path(os.path.dirname(os.path.abspath(__file__)))
     original_model = resource_path(original_model_path)
@@ -83,6 +102,8 @@ def main():
         meta_diff_file_path="data/DiffFiles/NameOfYourMetaDiffFile.hdiff",                 # Change the name to the name of the MetaHdiff file you generated
         output_name = "MyCoolAvatar_FT"                                                    # Change this to your desired output name                                                   # Change this to your desired output name
     )
+
+    delete_files_in_directory(os.path.join(os.path.expanduser("~"), "AppData", "LocalLow", "VRChat", "VRChat", "OSC"))
     
     print("Patch complete! Please read the documentation and instructions.")
     input("Press Enter to exit...")
