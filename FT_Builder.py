@@ -1,5 +1,7 @@
 import os
 from pickle import TRUE
+import tkinter as tk
+from tkinter import filedialog
 import sys
 import shutil
 import subprocess
@@ -22,6 +24,22 @@ def print_ascii_art():
     print(ascii_art)
     print(credits)
 
+
+def get_file_path(prompt):
+    root = tk.Tk()
+    root.withdraw()  # Hide the main window
+
+    file_path = filedialog.askopenfilename(title=prompt)
+
+    return file_path
+
+def get_directory_path(prompt):
+    root = tk.Tk()
+    root.withdraw()  # Hide the main window
+
+    directory_path = filedialog.askdirectory(title=prompt)
+
+    return directory_path
 
 #remplaces the sick descriptions you've made for your product with what you input if you so please
 def replace_placeholders_in_files_in_directory(directory, AvatarName, AvatarCreatorName, BoothLink, PackageName, DirPatcher, DirPrefab):
@@ -99,33 +117,26 @@ def modify_python_patcher_script(original_model_path, original_meta_file_path, d
 
 
 
+
+
 def main():
 
     print_ascii_art()
 
     # Get the required info to proceed
 
-#   OriginalFBX = input("Drag and drop the original FBX here: ")                Until we find a way to build the builder
-    OriginalFBX = input("Please input the path to the original FBX: ")
-    if OriginalFBX.startswith('"') and OriginalFBX.endswith('"'):
-        OriginalFBX = OriginalFBX.strip('"')
-    
-    while not os.path.isfile(OriginalFBX) :
-        OriginalFBX = input("Please input the path to an original fbx file that exists")
-        if OriginalFBX.startswith('"') and OriginalFBX.endswith('"'):
-            OriginalFBX = OriginalFBX.strip('"')
+
+    OriginalFBX = get_file_path("Please select the original FBX file")
+    while not os.path.isfile(OriginalFBX):
+        OriginalFBX = get_file_path("Please select a valid original FBX file")
+
+    FaceTrackedFBX = get_file_path("Please select the Face tracked FBX file")
+    while not os.path.isfile(FaceTrackedFBX):
+        FaceTrackedFBX = get_file_path("Please select a valid Face tracked FBX file")
+
+
+
         
-    
-
-#   FaceTrackedFBX = input("Drag and drop the face tracked FBX here: ")
-    FaceTrackedFBX = input("Please input the path to the Face tracked FBX: ")
-    if FaceTrackedFBX.startswith('"') and FaceTrackedFBX.endswith('"'):
-        FaceTrackedFBX = FaceTrackedFBX.strip('"')
-    while not os.path.isfile(FaceTrackedFBX) :
-        FaceTrackedFBX = input("Please input the path to an original fbx file that exists")
-        if FaceTrackedFBX.startswith('"') and FaceTrackedFBX.endswith('"'):
-            FaceTrackedFBX = FaceTrackedFBX.strip('"')
-
 
     NameCustomDir = input("Please input the name of your custom directory: ")
 
@@ -139,14 +150,10 @@ def main():
 
 
     
-    DescriptionDir = input("Please input the directory of your descriptions and readme files (will skip if left empty): ")
     
-    if DescriptionDir != '':
-        if DescriptionDir.startswith('"') and DescriptionDir.endswith('"'):
-            DescriptionDir = DescriptionDir.strip('"')
-        while not os.path.isdir(DescriptionDir):
-            DescriptionDir = input("Please input a valid directory with your descriptions and readme files (will not skip because you failed your first failed the first time bozo): ")
-            
+    DescriptionDir = get_directory_path("Please select the directory with your descriptions and readme files (leave empty to skip)")
+
+    if DescriptionDir!="":
         CreatorName = input("Please input the name of the creator: ")
         BoothPage = input("Please input the page of the avatar: ")
         PackageName = input("Please input the name of the package that users will have: ")
