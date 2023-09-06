@@ -14,12 +14,75 @@ def print_ascii_art():
 (__) \_/\_/ \___)(____)   (__) (__\_)\_/\_/ \___)(__\_)(__)\_)__) \___/  (__)  \_/\_/(__) \___)\_)(_/(____)(__\_)
     """
     credits = r"""
-                                        Made By Hash - v1.0
+                                        Made By Hash - v1.2
 
 
     """
     print(ascii_art)
     print(credits)
+
+def print_ascii_success():
+    ascii_art = r"""
+
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                 ____  _  _   ___  ____  ____  ____    _   
+                / ___)/ )( \ / __)(  __)/ ___)/ ___)  / \  
+                \___ \) \/ (( (__  ) _) \___ \\___ \  \_/  
+                (____/\____/ \___)(____)(____/(____/  (_)  
+    """
+    desc = r"""
+                  Please import the prefab in your scene
+
+                  
+                  
+
+    """
+    print(ascii_art)
+    print(desc)
+
+def print_ascii_error():
+    ascii_art = r"""
+
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    
+   
+             ____  ____  ____   __  ____ 
+            (  __)(  _ \(  _ \ /  \(  _ \
+             ) _)  )   / )   /(  O ))   /
+            (____)(__\_)(__\_) \__/(__\_)
+    """
+
+    print(ascii_art)
 
 def resource_path(relative_path):
     """ Get absolute path to resource, works for dev and for PyInstaller """
@@ -57,15 +120,21 @@ def patch_model(original_model_path, original_meta_file_path, diff_file_path, me
     diff_file = resource_path(diff_file_path)
     meta_diff_file = resource_path(meta_diff_file_path)
 
+    ErrorFlag = False
+
     if not os.path.exists(original_model):
         error_msg = f"Please make sure you have the original .fbx at:\n{original_model}"
+        print_ascii_error()
         print(error_msg)
         input("Press Enter to continue...")
+        ErrorFlag = True
         return
 
     if not os.path.exists(diff_file):
+        print_ascii_error()
         print("Missing diff file")
         input("Press Enter to continue...")
+        ErrorFlag = True
         return
 
     backup_dir = os.path.abspath(os.path.join(__file__, '..', '..', 'fbx'))
@@ -82,20 +151,27 @@ def patch_model(original_model_path, original_meta_file_path, diff_file_path, me
     patched_meta_file = os.path.join(backup_dir, f'{output_name}.meta')
 
     if subprocess.run([patcher_exe, '-f', patched_model, diff_file, patched_model]).returncode != 0:
+        print_ascii_error()
         print("Error occurred during patching process for model.")
         input("Press Enter to continue...")
+        ErrorFlag = True
         return
 
     if subprocess.run([patcher_exe, '-f', patched_meta_file, meta_diff_file, patched_meta_file]).returncode != 0:
+        print_ascii_error()
         print("Error occurred during patching process for meta file.")
         input("Press Enter to continue...")
+        ErrorFlag = True
         return
+    return ErrorFlag
 
 
 def main():
     print_ascii_art()
 
-    patch_model(
+    ErrorFlag = False
+
+    ErrorFlag = patch_model(
         original_model_path="../../../ Location of your FBX relative to Assets",           # Change this to the relative directory to your FBX
         original_meta_file_path="../../../ Location of your FBX.meta relative to Assets",  # Change this to the relative directory to your FBX's import settings
         diff_file_path="data/DiffFiles/NameOfYourDiffFile.hdiff",                          # Change the name to the name of the Hdiff file you generated
@@ -105,8 +181,9 @@ def main():
 
     delete_files_in_directory(os.path.join(os.path.expanduser("~"), "AppData", "LocalLow", "VRChat", "VRChat", "OSC"))
     
-    print("Patch complete! Please read the documentation and instructions.")
-    input("Press Enter to exit...")
+    if ErrorFlag==False:
+        print_ascii_success()
+        input("Press Enter to continue...")
 
 if __name__ == "__main__":
     main()

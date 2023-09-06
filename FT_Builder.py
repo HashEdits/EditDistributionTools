@@ -24,6 +24,42 @@ def print_ascii_art():
     print(ascii_art)
     print(credits)
 
+def print_ascii_Ready():
+    ascii_art = r"""
+    
+
+    
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+ 
+ _  _  __   _  _  ____    ____  __  __    ____  ____     
+( \/ )/  \ / )( \(  _ \  (  __)(  )(  )  (  __)/ ___)    
+ )  /(  O )) \/ ( )   /   ) _)  )( / (_/\ ) _) \___ \    
+(__/  \__/ \____/(__\_)  (__)  (__)\____/(____)(____/    
+  __   ____  ____    ____  ____   __   ____  _  _    _   
+ / _\ (  _ \(  __)  (  _ \(  __) / _\ (    \( \/ )  / \  
+/    \ )   / ) _)    )   / ) _) /    \ ) D ( )  /   \_/  
+\_/\_/(__\_)(____)  (__\_)(____)\_/\_/(____/(__/    (_)  
+    """
+    check = r"""
+    Evrything should be all up and ready in the folder
+
+    """
+    print(ascii_art)
+    print(check)
+
 
 def get_file_path(prompt):
     root = tk.Tk()
@@ -86,7 +122,7 @@ def get_assets_relative_path(file_path):
     
 #fonction that will take care of modifying the right lines of code in the patcher
 def modify_python_patcher_script(original_model_path, original_meta_file_path, diff_file_name, meta_diff_file_name, output_name, NameCustomScript):
-    with open('PythonPatcher.py', 'r') as file:
+    with open('PythonPatcher.py', 'r', encoding='utf-8') as file:  # Open the file in UTF-8 encoding
         script_content = file.read()
 
     script_content = script_content.replace(
@@ -110,8 +146,9 @@ def modify_python_patcher_script(original_model_path, original_meta_file_path, d
         f'output_name = "{output_name}"'
     )
 
-    with open("! "+NameCustomScript+"Patcher.py", 'w') as file:
-        file.write(script_content)
+    with open("! "+NameCustomScript+"Patcher.py", 'wb') as file:  # Open the file in binary write mode
+        encoded_content = script_content.encode('utf-8')  # Encode the content as bytes
+        file.write(encoded_content)
 
     print("Modified script and saved it as '! " + NameCustomScript + "Patcher.py'")
 
@@ -119,19 +156,25 @@ def modify_python_patcher_script(original_model_path, original_meta_file_path, d
 
 
 
+
 def main():
+    os.environ['PYTHONIOENCODING'] = 'utf-8'
 
     print_ascii_art()
 
+
     # Get the required info to proceed
 
-
+    print("Please select the original FBX file")
     OriginalFBX = get_file_path("Please select the original FBX file")
     while not os.path.isfile(OriginalFBX):
+        print("Please select a valid original FBX file")
         OriginalFBX = get_file_path("Please select a valid original FBX file")
 
+    print("Please select the Face tracked FBX file")
     FaceTrackedFBX = get_file_path("Please select the Face tracked FBX file")
     while not os.path.isfile(FaceTrackedFBX):
+        print("Please select a valid Face tracked FBX file")
         FaceTrackedFBX = get_file_path("Please select a valid Face tracked FBX file")
 
 
@@ -150,7 +193,7 @@ def main():
 
 
     
-    
+    print("Please select the directory with your descriptions and readme files (leave empty to skip) (window may not be focused, check your alt+tab to find the window)")
     DescriptionDir = get_directory_path("Please select the directory with your descriptions and readme files (leave empty to skip)")
 
     if DescriptionDir!="":
@@ -271,6 +314,9 @@ def main():
             DirPatcher,
             DirPrefab,
         )
+
+
+    print_ascii_Ready()
 
 
 if __name__ == "__main__":
