@@ -155,6 +155,35 @@ def modify_python_patcher_script(original_model_path, original_meta_file_path, d
 
 
 
+def get_valid_description_directory():
+    while True:
+        print("Please select the directory with your descriptions and readme files (leave empty to skip) (window may not be focused, check your alt+tab to find the window)")
+        DescriptionDir = get_directory_path("Please select the directory with your descriptions and readme files (leave empty to skip)")
+
+        if not DescriptionDir:
+            # User left it empty or canceled, skip
+            print("Description directory selection skipped.")
+            return None, None, None, None  # Return None for all values
+
+        # Check if DescriptionDir is a valid directory
+        if os.path.isdir(DescriptionDir):
+            txt_files = [f for f in os.listdir(DescriptionDir) if f.endswith(".txt")]
+
+            if txt_files:
+                # Valid directory with .txt files, get additional inputs
+                CreatorName = input("Please input the name of the creator: ")
+                BoothPage = input("Please input the page of the avatar: ")
+                PackageName = input("Please input the name of the package that users will have: ")
+                return DescriptionDir, CreatorName, BoothPage, PackageName
+            else:
+                print("The selected directory does not contain any .txt files. Please try again.")
+        else:
+            print("Invalid directory. Please select a valid directory or leave empty to skip.")
+
+
+
+
+
 
 
 def main():
@@ -192,15 +221,7 @@ def main():
         NameCustomAvatarDir = input("Please input a name for your avatar's custom directory that isn't a file or a folder: ")
 
 
-    
-    print("Please select the directory with your descriptions and readme files (leave empty to skip) (window may not be focused, check your alt+tab to find the window)")
-    DescriptionDir = get_directory_path("Please select the directory with your descriptions and readme files (leave empty to skip)")
-
-    if DescriptionDir!="":
-        CreatorName = input("Please input the name of the creator: ")
-        BoothPage = input("Please input the page of the avatar: ")
-        PackageName = input("Please input the name of the package that users will have: ")
-
+    DescriptionDir, CreatorName, BoothPage, PackageName = get_valid_description_directory()
 
     
 
