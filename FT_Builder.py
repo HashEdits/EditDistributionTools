@@ -265,13 +265,11 @@ def main():
 
         #creates the FBXDiffFile
         if subprocess.run([hdiffz, '-f', OriginalFBX, FaceTrackedFBX, FBXDiffFile]).returncode != 0:
-            print("Error occurred during creation of the diff file.")
-            input("Press Enter to continue...")
+            raise Exception("Error occurred during creation of the diff file.")
 
         #creates the MetaFBXDiffFile
         if subprocess.run([hdiffz, '-f', OriginalFBX+".meta", FaceTrackedFBX+".meta", MetaDiffFile]).returncode != 0:
-            print("Error occurred during creation of the meta diff file.")
-            input("Press Enter to continue...")
+            raise Exception("Error occurred during creation of the meta diff file.")
         
         #location of the og script and the destination script
         OriginalScript = os.path.abspath(os.path.join(__file__, '..', 'PythonPatcher.py'))
@@ -359,9 +357,27 @@ def main():
 
 
         print_ascii_Ready()
+
+
+
+
+        
     except Exception as e:
         CustomDir = os.path.abspath(os.path.join(os.path.dirname(__file__), NameCustomDir))
-        delete_files_in_directory(CustomDir)
+        if os.path.isfile(CustomDir):
+            delete_files_in_directory(CustomDir)
+        
+        BuildFolder = os.path.abspath(os.path.join(os.path.dirname(__file__), 'build'))
+        if os.path.exists(BuildFolder):
+            delete_files_in_directory(BuildFolder)
+
+        if os.path.isfile(os.path.abspath(os.path.join(os.path.dirname(__file__), "! " + NameCustomAvatarDir + "Patcher.py"))):
+            os.remove(os.path.abspath(os.path.join(os.path.dirname(__file__), "! " + NameCustomAvatarDir + "Patcher.py")))
+
+        if os.path.isfile(os.path.abspath(os.path.join(os.path.dirname(__file__), "! " + NameCustomAvatarDir + "Patcher.spec"))):
+            os.remove(os.path.abspath(os.path.join(os.path.dirname(__file__), "! " + NameCustomAvatarDir + "Patcher.spec")))
+        
+        
         print("An error occurred while copying the file:", str(e))
 
 
