@@ -163,7 +163,7 @@ def get_valid_description_directory():
         if not DescriptionDir:
             # User left it empty or canceled, skip
             print("Description directory selection skipped.")
-            return None, None, None, None  # Return None for all values
+            return "", "", "", ""  # Return None for all values
 
         # Check if DescriptionDir is a valid directory
         if os.path.isdir(DescriptionDir):
@@ -179,6 +179,27 @@ def get_valid_description_directory():
                 print("The selected directory does not contain any .txt files. Please try again.")
         else:
             print("Invalid directory. Please select a valid directory or leave empty to skip.")
+
+
+
+def delete_files_in_directory(directory_path):
+    try:
+        # Check if the directory exists
+        if os.path.exists(directory_path):
+            # Iterate over all files and subdirectories in the directory
+            for root, dirs, files in os.walk(directory_path, topdown=False):
+                for file_name in files:
+                    file_path = os.path.join(root, file_name)
+                    os.remove(file_path)  # Delete the file
+                for dir_name in dirs:
+                    dir_path = os.path.join(root, dir_name)
+                    shutil.rmtree(dir_path)  # Delete the subdirectory and its contents
+            shutil.rmtree(directory_path)
+            print(f"generated custom folder deleted")
+        else:
+            print(f"no custom folder found")
+    except Exception as e:
+        print(f"An error occurred while deleting the files in the custom folder, error:  {e}")
 
 
 
@@ -226,118 +247,122 @@ def main():
     
 
     
-
-    #creates the funky subfolders
-    target_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), NameCustomDir, NameCustomAvatarDir, 'patcher', 'data', 'DiffFiles'))
-    os.makedirs(target_dir, exist_ok=True)
-
-
-    #location of the hdiff builds
-    hdiffz = os.path.join(os.path.dirname(__file__), 'hdiff', 'hdiffz.exe')
-    hpatchz = os.path.join(os.path.dirname(__file__), 'hdiff', 'hpatchz.exe')
-
-    #location of the diff files
-    NameFBXDiffFile = NameCustomAvatarDir + 'Diff'
-    NameMetaDiffFile = NameCustomAvatarDir + 'Meta' + 'Diff'
-    FBXDiffFile = os.path.abspath(os.path.join(os.path.dirname(__file__), NameCustomDir, NameCustomAvatarDir, 'patcher', 'data', 'DiffFiles', NameFBXDiffFile+".hdiff"))
-    MetaDiffFile = os.path.abspath(os.path.join(os.path.dirname(__file__), NameCustomDir, NameCustomAvatarDir, 'patcher', 'data', 'DiffFiles', NameMetaDiffFile+".hdiff"))
-
-    #creates the FBXDiffFile
-    if subprocess.run([hdiffz, '-f', OriginalFBX, FaceTrackedFBX, FBXDiffFile]).returncode != 0:
-        print("Error occurred during creation of the diff file.")
-        input("Press Enter to continue...")
-
-    #creates the MetaFBXDiffFile
-    if subprocess.run([hdiffz, '-f', OriginalFBX+".meta", FaceTrackedFBX+".meta", MetaDiffFile]).returncode != 0:
-        print("Error occurred during creation of the meta diff file.")
-        input("Press Enter to continue...")
-    
-    #location of the og script and the destination script
-    OriginalScript = os.path.abspath(os.path.join(__file__, '..', 'PythonPatcher.py'))
-    destination_path = os.path.abspath(os.path.join(os.path.dirname(__file__),"! "+ NameCustomAvatarDir + "Patcher.py"))
-
-    print("OriginalScript:", OriginalScript)
-    print("destination_path:", destination_path)
-
-    shutil.copy(OriginalScript, destination_path)
-
-    #modifying the script with the input files (makes sure it's using the right formating)
-    modify_python_patcher_script(
-        get_assets_relative_path(OriginalFBX).replace("\\", "/"),
-        get_assets_relative_path(OriginalFBX+".meta").replace("\\", "/"),
-        NameFBXDiffFile,
-        NameMetaDiffFile,
-        os.path.basename(FaceTrackedFBX).replace("\\", "/"),
-        NameCustomAvatarDir
-    )
+    try:
+        #creates the funky subfolders
+        target_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), NameCustomDir, NameCustomAvatarDir, 'patcher', 'data', 'DiffFiles'))
+        os.makedirs(target_dir, exist_ok=True)
 
 
-    #build the patcher
-    buildDestination = os.path.abspath(os.path.join(os.path.dirname(__file__), NameCustomDir, NameCustomAvatarDir, 'patcher'))
-    PyInstaller.__main__.run([
-    "! "+NameCustomAvatarDir+"Patcher.py",
-    '--onedir',
-    '--distpath', buildDestination,
-    '--icon='+ os.path.abspath(os.path.join(os.path.dirname(__file__), 'YourCoolIcon.ico'))
-    ])
+        #location of the hdiff builds
+        hdiffz = os.path.join(os.path.dirname(__file__), 'hdiff', 'hdiffz.exe')
+        hpatchz = os.path.join(os.path.dirname(__file__), 'hdiff', 'hpatchz.exe')
 
+        #location of the diff files
+        NameFBXDiffFile = NameCustomAvatarDir + 'Diff'
+        NameMetaDiffFile = NameCustomAvatarDir + 'Meta' + 'Diff'
+        FBXDiffFile = os.path.abspath(os.path.join(os.path.dirname(__file__), NameCustomDir, NameCustomAvatarDir, 'patcher', 'data', 'DiffFiles', NameFBXDiffFile+".hdiff"))
+        MetaDiffFile = os.path.abspath(os.path.join(os.path.dirname(__file__), NameCustomDir, NameCustomAvatarDir, 'patcher', 'data', 'DiffFiles', NameMetaDiffFile+".hdiff"))
 
-    #moving patcher files over
-    source_dir = os.path.join(buildDestination, "! "+NameCustomAvatarDir+"Patcher")
-    file_names = os.listdir(source_dir)
-    
-    for file_name in file_names:
-        shutil.move(os.path.join(source_dir, file_name), buildDestination)
+        #creates the FBXDiffFile
+        if subprocess.run([hdiffz, '-f', OriginalFBX, FaceTrackedFBX, FBXDiffFile]).returncode != 0:
+            print("Error occurred during creation of the diff file.")
+            input("Press Enter to continue...")
 
-    #moving evrything that can be under the data folder
+        #creates the MetaFBXDiffFile
+        if subprocess.run([hdiffz, '-f', OriginalFBX+".meta", FaceTrackedFBX+".meta", MetaDiffFile]).returncode != 0:
+            print("Error occurred during creation of the meta diff file.")
+            input("Press Enter to continue...")
+        
+        #location of the og script and the destination script
+        OriginalScript = os.path.abspath(os.path.join(__file__, '..', 'PythonPatcher.py'))
+        destination_path = os.path.abspath(os.path.join(os.path.dirname(__file__),"! "+ NameCustomAvatarDir + "Patcher.py"))
 
-    files_to_exclude = [
-        "! "+NameCustomAvatarDir+"Patcher.exe",
-        "base_library.zip",
-        NameFBXDiffFile+".hdiff",
-        NameMetaDiffFile+".hdiff"
-    ]
+        print("OriginalScript:", OriginalScript)
+        print("destination_path:", destination_path)
 
-    dll_names_to_exclude = ["python"]
+        shutil.copy(OriginalScript, destination_path)
 
-    for root, _, files in os.walk(buildDestination):
-        for file_name in files:
-            source_path = os.path.join(root, file_name)
-            destination_path = ""
-
-            if file_name in files_to_exclude:
-                continue
-            
-            is_dll_with_python = any(name in file_name.lower() for name in dll_names_to_exclude)
-            if is_dll_with_python:
-                continue
-            else:
-                destination_path = os.path.join(buildDestination, 'data', file_name)
-
-            shutil.move(source_path, destination_path)
-
-    shutil.copy(hpatchz, os.path.join(buildDestination, 'data', 'hpatchz.exe'))
-    shutil.copy(os.path.join(hpatchz, '..', 'License.txt'), os.path.join(buildDestination, 'data', 'License.txt'))
-    os.rmdir(source_dir)
-    print("Files moved to the 'data' folder.")
-
-    if DescriptionDir != '':
-        #remplacing descriptions and readme placeholders
-        DirPatcher = os.path.join('Assets', NameCustomDir, NameCustomAvatarDir, 'patcher')
-        DirPrefab = os.path.join('Assets', NameCustomDir, NameCustomAvatarDir, 'prefab')
-
-        replace_placeholders_in_files_in_directory(
-            DescriptionDir,
-            NameCustomAvatarDir,
-            CreatorName,
-            BoothPage,
-            PackageName,
-            DirPatcher,
-            DirPrefab,
+        #modifying the script with the input files (makes sure it's using the right formating)
+        modify_python_patcher_script(
+            get_assets_relative_path(OriginalFBX).replace("\\", "/"),
+            get_assets_relative_path(OriginalFBX+".meta").replace("\\", "/"),
+            NameFBXDiffFile,
+            NameMetaDiffFile,
+            os.path.basename(FaceTrackedFBX).replace("\\", "/"),
+            NameCustomAvatarDir
         )
 
 
-    print_ascii_Ready()
+        #build the patcher
+        buildDestination = os.path.abspath(os.path.join(os.path.dirname(__file__), NameCustomDir, NameCustomAvatarDir, 'patcher'))
+        PyInstaller.__main__.run([
+        "! "+NameCustomAvatarDir+"Patcher.py",
+        '--onedir',
+        '--distpath', buildDestination,
+        '--icon='+ os.path.abspath(os.path.join(os.path.dirname(__file__), 'YourCoolIcon.ico'))
+        ])
+
+
+        #moving patcher files over
+        source_dir = os.path.join(buildDestination, "! "+NameCustomAvatarDir+"Patcher")
+        file_names = os.listdir(source_dir)
+        
+        for file_name in file_names:
+            shutil.move(os.path.join(source_dir, file_name), buildDestination)
+
+        #moving evrything that can be under the data folder
+
+        files_to_exclude = [
+            "! "+NameCustomAvatarDir+"Patcher.exe",
+            "base_library.zip",
+            NameFBXDiffFile+".hdiff",
+            NameMetaDiffFile+".hdiff"
+        ]
+
+        dll_names_to_exclude = ["python"]
+
+        for root, _, files in os.walk(buildDestination):
+            for file_name in files:
+                source_path = os.path.join(root, file_name)
+                destination_path = ""
+
+                if file_name in files_to_exclude:
+                    continue
+                
+                is_dll_with_python = any(name in file_name.lower() for name in dll_names_to_exclude)
+                if is_dll_with_python:
+                    continue
+                else:
+                    destination_path = os.path.join(buildDestination, 'data', file_name)
+
+                shutil.move(source_path, destination_path)
+
+        shutil.copy(hpatchz, os.path.join(buildDestination, 'data', 'hpatchz.exe'))
+        shutil.copy(os.path.join(hpatchz, '..', 'License.txt'), os.path.join(buildDestination, 'data', 'License.txt'))
+        os.rmdir(source_dir)
+        print("Files moved to the 'data' folder.")
+
+        if DescriptionDir != '':
+            #remplacing descriptions and readme placeholders
+            DirPatcher = os.path.join('Assets', NameCustomDir, NameCustomAvatarDir, 'patcher')
+            DirPrefab = os.path.join('Assets', NameCustomDir, NameCustomAvatarDir, 'prefab')
+
+            replace_placeholders_in_files_in_directory(
+                DescriptionDir,
+                NameCustomAvatarDir,
+                CreatorName,
+                BoothPage,
+                PackageName,
+                DirPatcher,
+                DirPrefab,
+            )
+
+
+        print_ascii_Ready()
+    except Exception as e:
+        CustomDir = os.path.abspath(os.path.join(os.path.dirname(__file__), NameCustomDir))
+        delete_files_in_directory(CustomDir)
+        print("An error occurred while copying the file:", str(e))
 
 
 if __name__ == "__main__":
