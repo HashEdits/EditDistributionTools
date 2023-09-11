@@ -376,7 +376,7 @@ def main():
         
     except Exception as e:
         CustomDir = os.path.abspath(os.path.join(os.path.dirname(__file__), NameCustomDir))
-        if os.path.isfile(CustomDir):
+        if os.path.exists(CustomDir):
             delete_files_in_directory(CustomDir)
         
         BuildFolder = os.path.abspath(os.path.join(os.path.dirname(__file__), 'build'))
