@@ -356,9 +356,8 @@ def main():
             )
 
             
-        BuildFolder = os.path.abspath(os.path.join(os.path.dirname(__file__), 'build'))
-        if os.path.exists(BuildFolder):
-            delete_files_in_directory(BuildFolder)
+        
+        delete_files_in_directory(os.path.abspath(os.path.join(os.path.dirname(__file__), 'build')))
 
         if os.path.isfile(os.path.abspath(os.path.join(os.path.dirname(__file__), "! " + NameCustomAvatarDir + "Patcher.py"))):
             os.remove(os.path.abspath(os.path.join(os.path.dirname(__file__), "! " + NameCustomAvatarDir + "Patcher.py")))
@@ -375,13 +374,10 @@ def main():
 
         
     except Exception as e:
-        CustomDir = os.path.abspath(os.path.join(os.path.dirname(__file__), NameCustomDir))
-        if os.path.exists(CustomDir):
-            delete_files_in_directory(CustomDir)
         
-        BuildFolder = os.path.abspath(os.path.join(os.path.dirname(__file__), 'build'))
-        if os.path.exists(BuildFolder):
-            delete_files_in_directory(BuildFolder)
+        delete_files_in_directory(os.path.abspath(os.path.join(os.path.dirname(__file__), NameCustomDir)))
+        
+        delete_files_in_directory(os.path.abspath(os.path.join(os.path.dirname(__file__), 'build')))
 
         if os.path.isfile(os.path.abspath(os.path.join(os.path.dirname(__file__), "! " + NameCustomAvatarDir + "Patcher.py"))):
             os.remove(os.path.abspath(os.path.join(os.path.dirname(__file__), "! " + NameCustomAvatarDir + "Patcher.py")))
