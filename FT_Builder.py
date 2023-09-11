@@ -356,7 +356,7 @@ def main():
             )
 
             
-        
+        #cleaning up
         delete_files_in_directory(os.path.abspath(os.path.join(os.path.dirname(__file__), 'build')))
 
         if os.path.isfile(os.path.abspath(os.path.join(os.path.dirname(__file__), "! " + NameCustomAvatarDir + "Patcher.py"))):
@@ -366,7 +366,7 @@ def main():
             os.remove(os.path.abspath(os.path.join(os.path.dirname(__file__), "! " + NameCustomAvatarDir + "Patcher.spec")))
         
 
-
+        #yippie
         print_ascii_Ready()
 
 
@@ -385,7 +385,7 @@ def main():
         if os.path.isfile(os.path.abspath(os.path.join(os.path.dirname(__file__), "! " + NameCustomAvatarDir + "Patcher.spec"))):
             os.remove(os.path.abspath(os.path.join(os.path.dirname(__file__), "! " + NameCustomAvatarDir + "Patcher.spec")))
         
-        
+        #big_sadge
         print("An error occurred while copying the file:", str(e))
 
 
