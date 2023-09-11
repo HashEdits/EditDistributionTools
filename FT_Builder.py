@@ -53,12 +53,12 @@ def print_ascii_Ready():
 /    \ )   / ) _)    )   / ) _) /    \ ) D ( )  /   \_/  
 \_/\_/(__\_)(____)  (__\_)(____)\_/\_/(____/(__/    (_)  
     """
-    check = r"""
+    LilText = r"""
     Evrything should be all up and ready in the folder
 
     """
     print(ascii_art)
-    print(check)
+    print(LilText)
 
 
 def get_file_path(prompt):
@@ -308,8 +308,8 @@ def main():
         for file_name in file_names:
             shutil.move(os.path.join(source_dir, file_name), buildDestination)
 
-        #moving evrything that can be under the data folder
 
+        #moving evrything that can be under the data folder
         files_to_exclude = [
             "! "+NameCustomAvatarDir+"Patcher.exe",
             "base_library.zip",
