@@ -355,6 +355,18 @@ def main():
                 DirPrefab,
             )
 
+            
+        BuildFolder = os.path.abspath(os.path.join(os.path.dirname(__file__), 'build'))
+        if os.path.exists(BuildFolder):
+            delete_files_in_directory(BuildFolder)
+
+        if os.path.isfile(os.path.abspath(os.path.join(os.path.dirname(__file__), "! " + NameCustomAvatarDir + "Patcher.py"))):
+            os.remove(os.path.abspath(os.path.join(os.path.dirname(__file__), "! " + NameCustomAvatarDir + "Patcher.py")))
+
+        if os.path.isfile(os.path.abspath(os.path.join(os.path.dirname(__file__), "! " + NameCustomAvatarDir + "Patcher.spec"))):
+            os.remove(os.path.abspath(os.path.join(os.path.dirname(__file__), "! " + NameCustomAvatarDir + "Patcher.spec")))
+        
+
 
         print_ascii_Ready()
 
