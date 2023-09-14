@@ -233,13 +233,15 @@ def main():
 
     NameCustomDir = input("Please input the name of your custom directory: ")
 
-    while os.path.isfile(NameCustomDir) or os.path.isdir(NameCustomDir):
-        NameCustomDir = input("Please input a name for your custom directory that isn't a file or a folder: ")
+    while os.path.isfile(NameCustomDir):
+        print("Please input a name for your custom directory that isn't a file: ")
+        NameCustomDir = input("Please input a name for your custom directory that isn't a file: ")
         
-
+    print("Please input the name of the avatar's custom directory: ")
     NameCustomAvatarDir = input("Please input the name of the avatar's custom directory: ")
     while os.path.isfile(NameCustomAvatarDir) or os.path.isdir(NameCustomAvatarDir):
-        NameCustomAvatarDir = input("Please input a name for your avatar's custom directory that isn't a file or a folder: ")
+        print("Please input a name for your avatar's custom directory that isn't a file or please delete your old atempt: ")
+        NameCustomAvatarDir = input("Please input a name for your avatar's custom directory that isn't a file or please delete your old atempt: ")
 
 
     DescriptionDir, CreatorName, BoothPage, PackageName = get_valid_description_directory()
@@ -385,6 +387,33 @@ def main():
         if os.path.isfile(os.path.abspath(os.path.join(os.path.dirname(__file__), "! " + NameCustomAvatarDir + "Patcher.spec"))):
             os.remove(os.path.abspath(os.path.join(os.path.dirname(__file__), "! " + NameCustomAvatarDir + "Patcher.spec")))
         
+
+        ascii_art = r"""
+
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+                 ____  ____  ____   __  ____ 
+                (  __)(  _ \(  _ \ /  \(  _ \
+                 ) _)  )   / )   /(  O ))   /
+                (____)(__\_)(__\_) \__/(__\_)
+        """
+
+        print(ascii_art)
+
         #big_sadge
         print("An error occurred while copying the file:", str(e))
 
