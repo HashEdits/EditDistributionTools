@@ -17,7 +17,7 @@ def print_ascii_art():
 (__)   (__)   (____/\____/(__)\____/(____/(____)(__\_)
     """
     credits = r"""
-                 Made By Hash - v1.2
+                 Made By Hash - vVersionNumber
 
 
     """
