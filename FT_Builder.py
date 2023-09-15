@@ -162,7 +162,7 @@ def modify_python_patcher_script(original_model_path, original_meta_file_path, d
 
 def get_valid_description_directory():
     while True:
-        print("Please select the directory with your descriptions and readme files (leave empty to skip) (window may not be focused, check your alt+tab to find the window)")
+        print("Please select the directory with your descriptions and readme files (leave empty to skip)")
         DescriptionDir = get_directory_path("Please select the directory with your descriptions and readme files (leave empty to skip)")
 
         if not DescriptionDir:
