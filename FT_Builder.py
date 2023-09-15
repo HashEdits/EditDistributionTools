@@ -220,6 +220,9 @@ def main():
 
     # Get the required info to proceed
 
+
+    NameCustomAvatarDir = input("Please input the name of your avatar: ")
+
     print("Please select the original FBX file")
     OriginalFBX = get_file_path("Please select the original FBX file")
     while not os.path.isfile(OriginalFBX):
@@ -236,7 +239,6 @@ def main():
 
         
 
-    NameCustomAvatarDir = input("Please input the name of your avatar: ")
 
 
     DescriptionDir, CreatorName, BoothPage, PackageName = get_valid_description_directory()
