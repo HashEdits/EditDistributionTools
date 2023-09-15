@@ -128,12 +128,13 @@ def get_directory_path(prompt):
 
 def main():
     os.environ['PYTHONIOENCODING'] = 'utf-8'
-    Version_Number = input("Please input the version of the release: ")
 
     #RepoDir =  get_directory_path("please select where you have your repo")
     RepoDir = os.path.dirname(__file__)
 
     DestDir =  get_directory_path("please select where you want your release to be built")
+    
+    Version_Number = input("Please input the version of the release: ")
     
     TempDir = os.path.abspath(os.path.join(os.path.dirname(__file__), "temp"))
     os.makedirs(TempDir, exist_ok=True)
