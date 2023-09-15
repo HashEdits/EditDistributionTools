@@ -124,6 +124,18 @@ def get_grandparent_folder(file_path):
     # Use os.path.dirname to get the parent directory
     grandparent_directory = os.path.dirname(os.path.dirname(file_path))
     return grandparent_directory
+
+def get_first_folder_in_path(file_path):
+    # Split the file path into its components
+    path_components = os.path.normpath(file_path).split(os.path.sep)
+
+    # Find the first non-empty component (which represents a folder)
+    for component in path_components:
+        if component:
+            return component
+
+    # If no folder is found, return None
+    return None
     
 #fonction that will take care of modifying the right lines of code in the patcher
 def modify_python_patcher_script(original_model_path, original_meta_file_path, diff_file_name, meta_diff_file_name, output_name, NameCustomScript):
@@ -378,7 +390,7 @@ def main():
         
     except Exception as e:
         
-        delete_files_in_directory(os.path.abspath(os.path.join(os.path.dirname(__file__), NameCustomDir)))
+        delete_files_in_directory(os.path.abspath(os.path.join(os.path.dirname(__file__), get_first_folder_in_path(get_grandparent_folder(get_assets_relative_path(FaceTrackedFBX))))))
         
         delete_files_in_directory(os.path.abspath(os.path.join(os.path.dirname(__file__), 'build')))
 
