@@ -34,7 +34,7 @@ def print_ascii_yippie():
 
 def custom_ignore(dir, contents):
     exclude_files = ["ReleaseBundler.py" ,"FT_Builder.py", "PythonPatcher.py", "README.md", ".gitattributes"]
-    exclude_folders = [".github", ".git"]  # List of folder names to exclude
+    exclude_folders = [".github", ".git", "temp"]  # List of folder names to exclude
     ignored = set()
 
     for item in contents:
@@ -141,8 +141,7 @@ def main():
     copy_directory(RepoDir, TempDir)
     ModifyVersionNumber(Version_Number, RepoDir, TempDir,"FT_Builder.py")
     ModifyVersionNumber(Version_Number, RepoDir, TempDir,"PythonPatcher.py")
-    zip_folder(TempDir, "Face-Tracking-Patcher-V"+Version_Number)
-    shutil.move("Face-Tracking-Patcher-V"+Version_Number+".zip", DestDir)
+    zip_folder(TempDir, os.path.join(DestDir, "Face-Tracking-Patcher-V"+Version_Number))
     delete_files_in_directory(TempDir)
     print_ascii_yippie()
 
