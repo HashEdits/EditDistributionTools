@@ -114,8 +114,10 @@ I've tried setting up a board for y'all to see what I'd like to add to flesh out
 
 ## Credits 📕
 
+**[VRCFT](https://github.com/benaclejames/VRCFaceTracking)**
+
 **[HDiffPatch](https://github.com/sisong/HDiffPatch)**
 
 **[Nimble Design System Icons](https://iconduck.com/sets/nimble-design-system-icons)**
 
-**[Auto py to exe](https://pypi.org/project/auto-py-to-exe/)**
+**[StackEdit](stackedit.io)**
