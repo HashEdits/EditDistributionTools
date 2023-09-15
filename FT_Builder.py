@@ -221,7 +221,6 @@ def main():
     # Get the required info to proceed
 
 
-    NameCustomAvatarDir = input("Please input the name of your avatar: ")
 
     print("Please select the original FBX file")
     OriginalFBX = get_file_path("Please select the original FBX file")
@@ -242,6 +241,9 @@ def main():
 
 
     DescriptionDir, CreatorName, BoothPage, PackageName = get_valid_description_directory()
+    
+    
+    NameCustomAvatarDir = input("Please input the name of your avatar: ")
 
     
 
@@ -350,8 +352,8 @@ def main():
                 CreatorName,
                 BoothPage,
                 PackageName,
-                DirPatcher,
-                DirPrefab,
+                DirPatcher.replace("/", "\\"),
+                DirPrefab.replace("/", "\\"),
             )
 
             
