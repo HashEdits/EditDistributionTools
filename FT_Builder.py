@@ -120,6 +120,11 @@ def get_assets_relative_path(file_path):
     else:
         return None
     
+def get_grandparent_folder(file_path):
+    # Use os.path.dirname to get the parent directory
+    grandparent_directory = os.path.dirname(os.path.dirname(file_path))
+    return grandparent_directory
+    
 #fonction that will take care of modifying the right lines of code in the patcher
 def modify_python_patcher_script(original_model_path, original_meta_file_path, diff_file_name, meta_diff_file_name, output_name, NameCustomScript):
     with open('PythonPatcher.py', 'r', encoding='utf-8') as file:  # Open the file in UTF-8 encoding
@@ -231,17 +236,7 @@ def main():
 
         
 
-    NameCustomDir = input("Please input the name of your custom directory: ")
-
-    while os.path.isfile(NameCustomDir):
-        print("Please input a name for your custom directory that isn't a file: ")
-        NameCustomDir = input("Please input a name for your custom directory that isn't a file: ")
-        
-    print("Please input the name of the avatar's custom directory: ")
-    NameCustomAvatarDir = input("Please input the name of the avatar's custom directory: ")
-    while os.path.isfile(NameCustomAvatarDir) or os.path.isdir(NameCustomAvatarDir):
-        print("Please input a name for your avatar's custom directory that isn't a file or please delete your old atempt: ")
-        NameCustomAvatarDir = input("Please input a name for your avatar's custom directory that isn't a file or please delete your old atempt: ")
+    NameCustomAvatarDir = input("Please input the name of your avatar: ")
 
 
     DescriptionDir, CreatorName, BoothPage, PackageName = get_valid_description_directory()
@@ -251,7 +246,7 @@ def main():
     
     try:
         #creates the funky subfolders
-        target_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), NameCustomDir, NameCustomAvatarDir, 'patcher', 'data', 'DiffFiles'))
+        target_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), get_grandparent_folder(get_assets_relative_path(FaceTrackedFBX)), 'patcher', 'data', 'DiffFiles'))
         os.makedirs(target_dir, exist_ok=True)
 
 
@@ -262,8 +257,8 @@ def main():
         #location of the diff files
         NameFBXDiffFile = NameCustomAvatarDir + 'Diff'
         NameMetaDiffFile = NameCustomAvatarDir + 'Meta' + 'Diff'
-        FBXDiffFile = os.path.abspath(os.path.join(os.path.dirname(__file__), NameCustomDir, NameCustomAvatarDir, 'patcher', 'data', 'DiffFiles', NameFBXDiffFile+".hdiff"))
-        MetaDiffFile = os.path.abspath(os.path.join(os.path.dirname(__file__), NameCustomDir, NameCustomAvatarDir, 'patcher', 'data', 'DiffFiles', NameMetaDiffFile+".hdiff"))
+        FBXDiffFile = os.path.abspath(os.path.join(os.path.dirname(__file__), target_dir, NameFBXDiffFile+".hdiff"))
+        MetaDiffFile = os.path.abspath(os.path.join(os.path.dirname(__file__), target_dir, NameMetaDiffFile+".hdiff"))
 
         #creates the FBXDiffFile
         if subprocess.run([hdiffz, '-f', OriginalFBX, FaceTrackedFBX, FBXDiffFile]).returncode != 0:
@@ -294,7 +289,7 @@ def main():
 
 
         #build the patcher
-        buildDestination = os.path.abspath(os.path.join(os.path.dirname(__file__), NameCustomDir, NameCustomAvatarDir, 'patcher'))
+        buildDestination = os.path.abspath(os.path.join(os.path.dirname(__file__), get_grandparent_folder(get_assets_relative_path(FaceTrackedFBX)), 'patcher'))
         PyInstaller.__main__.run([
         "! "+NameCustomAvatarDir+"Patcher.py",
         '--onedir',
@@ -344,8 +339,8 @@ def main():
 
         if DescriptionDir != '':
             #remplacing descriptions and readme placeholders
-            DirPatcher = os.path.join('Assets', NameCustomDir, NameCustomAvatarDir, 'patcher')
-            DirPrefab = os.path.join('Assets', NameCustomDir, NameCustomAvatarDir, 'prefab')
+            DirPatcher = os.path.join('Assets', get_grandparent_folder(get_assets_relative_path(FaceTrackedFBX)), 'patcher')
+            DirPrefab = os.path.join('Assets', get_grandparent_folder(get_assets_relative_path(FaceTrackedFBX)), 'prefab')
 
             replace_placeholders_in_files_in_directory(
                 DescriptionDir,
