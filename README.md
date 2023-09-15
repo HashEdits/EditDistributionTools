@@ -1,5 +1,6 @@
 
 
+
 # Face Tracking Patcher 🗳️
 
 This is a simple tool to automate the ease the distribution and creation of face tracked avatars for VRChat.
@@ -44,25 +45,7 @@ If used please credit my socials and this GitHub Page
 - Follow the instructions
 
 ## Exemple 📑
-There is an extra theorical directory to show you what to expect from the builder if you input:
-
-- WhereverOnYourProjectIsLocatedOnYourDrive\ProjectName\Assets\CreatorName\AvatarName\fbx\MyCoolAvatar.fbx
-
-- WhereverOnYourProjectIsLocatedOnYourDrive\ProjectName\Assets\YourCustomDir\NameOfTheModel\fbx\MyCoolAvatar_FT.fbx
-
-- NameOfYourCustomFolder
-(something unique to keep all of your files in your addon)
-- NameOfTheModel
-
-- Path\To\My\Cool\Descriptions&ReadMe
-
-- AvatarCreatorName
-
-- [Creator.CoolStoreFront.com/item/MyCoolAvatar](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
-
-- NameOfThePackageCustomersOwn
-
-you'll find an exemple readme in **Description&ReadMeExemples** that you can bundle with your avatar's package to let the customer know what to do with it.
+You'll find an exemple readme in **Description&ReadMeExemples** that you can bundle with your avatar's package to let the customer know what to do with it.
 There's also an exemple description there.
 in summary any of the following:
 
@@ -114,8 +97,10 @@ I've tried setting up a board for y'all to see what I'd like to add to flesh out
 
 ## Credits 📕
 
+**[VRCFT](https://github.com/benaclejames/VRCFaceTracking)**
+
 **[HDiffPatch](https://github.com/sisong/HDiffPatch)**
 
 **[Nimble Design System Icons](https://iconduck.com/sets/nimble-design-system-icons)**
 
-**[Auto py to exe](https://pypi.org/project/auto-py-to-exe/)**
+**[StackEdit](stackedit.io)**
