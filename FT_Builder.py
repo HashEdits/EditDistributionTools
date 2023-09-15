@@ -242,7 +242,9 @@ def main():
 
     DescriptionDir, CreatorName, BoothPage, PackageName = get_valid_description_directory()
     
-    
+    print("")
+    print("")
+    print("")
     NameCustomAvatarDir = input("Please input the name of your avatar: ")
 
     
