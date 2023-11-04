@@ -31,6 +31,11 @@ If used please credit my socials and this GitHub Page
 
 ## How to use 😎
   
+
+[![da tutorial](https://cdn.discordapp.com/attachments/337986548664500236/1170205302013055016/Patcher_tutorial_thumbnail.png)](https://youtu.be/_VdgHVmIrR4?si=N6e7SP0I692uoN4N)
+
+
+
   - Make sure both your model and your face tracked model are set up in a unity project
   - (optional) put all of your descriptions and readme in a folder to ease the creation of pages
   
