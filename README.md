@@ -1,11 +1,11 @@
 
 
 
-# Face Tracking Patcher 🗳️
+# EditDistributor 🗳️
 
-This is a simple tool to automate the ease the distribution and creation of face tracked avatars for VRChat.
+This is a tool to automate and the ease the distribution of modifications of Unity 3D moddels
 
-![ ](https://cdn.discordapp.com/attachments/337986548664500236/1143948164232126656/Thumbnail_Face_tracking_patcher_Git_Hub.png)
+![ ](https://cdn.discordapp.com/attachments/337986548664500236/1203413914616856576/image.png)
 
 Due to how curent 3D model files are set up there isn't a way to share shape-keys without being tied to a mesh. Making the process of sharing such files rather tedious or to be left to the context of a commision where sharing mesh data is in general allowed between the commisioner and the artist.
 
@@ -17,34 +17,43 @@ It also now supports adding a directory with your different localized descriptio
 
 I am going to be using my tool from now on to build my Face Tracking Add-ons avaliable on my [Booth](https://hashedits.booth.pm/) and [Ko-Fi](https://ko-fi.com/hashedits/shop) shops
 
-If used please credit my socials and this GitHub Page
+If you end up using the tools please credit my socials and this GitHub Page
 
 ## Pre-requisites 🤓
 
-[Python](https://www.python.org/downloads/)
+A Unity project
 
-[Py Intsaller](https://pypi.org/project/auto-py-to-exe/)
+A 3D moddel
 
-
-
->pip install pyinstaller
+A modification of that 3D moddel
 
 ## How to use 😎
   
-  - Make sure both your model and your face tracked model are set up in a unity project
-  - (optional) put all of your descriptions and readme in a folder to ease the creation of pages
+A video tutorial on how to use the tool will be added down the line :bowtie:
+
+  - Make sure both your model and your face tracked model are in your unity project
+
+  - Make sure your modified model is stored in the following file structure:
+  `Assets/YourName/NameOfTheAvatar/fbx/YourCoolModel.fbx`
   
-- Open your python IDLE
-(the windows taskbar is your friend)
-- Click File -> Open
+- Acces the builder in your toolbar at
+`Tools/Hash/EditDistributor/Builder`
 
-- Navigate to where you have downloaded the repo -> FT_Builder
+- Drag and drop the prefab of the original moddel
 
-- Press F5
+- Drag and drop the prefab of the modified moddel
 
-- Follow the instructions
+	- (optional) change the distribution name if you don't want to use the name of the original moddel
 
-## Exemple 📑
+- Enter your name
+
+- Enter the name of the original package that end users will import in their projects
+
+	- (optional) gather up your descriptions and readme files in a folder to ease the creation of the store pages pages and fill in the relevent information
+
+- Hit the `Build` button
+
+## description generator 📑
 You'll find an exemple readme in **Description&ReadMeExemples** that you can bundle with your avatar's package to let the customer know what to do with it.
 There's also an exemple description there.
 in summary any of the following:
@@ -53,38 +62,11 @@ in summary any of the following:
 
 will be remplaced by something that makes sense in for your project
 
+## Updater 🔧
 
-## Distribute a face tracked avatar 👨‍🏫
-- Copy your custom generated directory earlier and drag and drop it in the Assets folder of your unity project
+You may want to update your creation in the future, instead of having to create a whole new patcher everytime I created an Updater tool
 
-- Make sure that your avatar has the required parameters, FX and additive controllers set up for VRCFaceTracking.
-(The use of [Jerry's template](https://github.com/Adjerry91/VRCFaceTracking-Templates) highly recomended)
 
-- Make sure the avatar works in game
-(would recommend using meowface, the very easy to use [Meowface](https://github.com/regzo2/VRCFaceTracking-MeowFace))
-(or [LiveLink](https://github.com/kusomaigo/VRCFaceTracking-LiveLink) if you're Apple flavoured)
-
-(If it doesn't check for potential avatar animation overwrite conflicts in your animators)
-
-- Create a prefab
-(this is done by dragging your avatar from your hierarchy to a prefab folder in the folder you generated for your avatar)
-
-- Select your custom folder
-
-- Right click
-
-- Export Package
-
-- Deselect your Face Tracked FBX
-
-- Deselect any of the avatar's original files
-
-- Click "Export..."
-
-- You're ready to sell your custom face tracked avatar!
-(make sure to always check the creator's licence agreement on attachements)
-
-  
 
 ## Upcoming features
 
@@ -93,14 +75,12 @@ I've tried setting up a board for y'all to see what I'd like to add to flesh out
 [Here's a link to it](https://github.com/users/HashEdits/projects/1/views/1)
 
 
-  
+
 
 ## Credits 📕
 
 **[VRCFT](https://github.com/benaclejames/VRCFaceTracking)**
 
 **[HDiffPatch](https://github.com/sisong/HDiffPatch)**
-
-**[Nimble Design System Icons](https://iconduck.com/sets/nimble-design-system-icons)**
 
 **[StackEdit](stackedit.io)**
