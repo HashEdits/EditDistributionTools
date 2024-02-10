@@ -370,6 +370,7 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
 -analyzer:"C:/Program Files/Unity/Hub/Editor/2022.3.6f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll"
 -analyzer:"C:/Program Files/Unity/Hub/Editor/2022.3.6f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
+"Assets/Hash's_Things/EditDistributor/Editor/CommunFonctions.cs"
 "Assets/Hash's_Things/EditDistributor/Editor/EditDistributorBuilder.cs"
 "Assets/Hash's_Things/EditDistributor/Editor/EditDistributorUpdater.cs"
 "Assets/Hash's_Things/EditDistributor/Editor/PatcherTemplate.cs"

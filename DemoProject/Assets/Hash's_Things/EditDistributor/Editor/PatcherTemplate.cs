@@ -35,7 +35,7 @@ public class PatcherTemplate : EditorWindow
 
             EditorGUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
-            GUILayout.Label("Creator" + "'s "+ "AvatarName", boldLabelStyle);
+            GUILayout.Label("DistributionCreator" + "'s "+ "AvatarName", boldLabelStyle);
             GUILayout.FlexibleSpace();
             EditorGUILayout.EndHorizontal();
 
@@ -119,7 +119,6 @@ public class PatcherTemplate : EditorWindow
                     if (LaunchProgramWithArguments(hpatchz, arguments, currentCustomfbxPath) == true)
                     {
                         debugMessage = 4;
-                        UnityEngine.Debug.Log("we caught the issue");
                         //communicate to the user that something went wrong during the patching process of the FBX
                     }
                     else
@@ -139,7 +138,7 @@ public class PatcherTemplate : EditorWindow
 
             using (new GUILayout.VerticalScope(EditorStyles.helpBox))
             {
-                UnityEngine.Debug.Log("debugMessage: " + debugMessage);
+
                 switch (debugMessage)
                 {
                     case 0:
@@ -188,7 +187,7 @@ public class PatcherTemplate : EditorWindow
     }
 
 
-    static string GoUpNDirs(string MyDir, int n)
+    private static string GoUpNDirs(string MyDir, int n)
     {
         MyDir = Path.GetFullPath(MyDir);
         string[] pathComponents = MyDir.Split('\\');
@@ -203,7 +202,7 @@ public class PatcherTemplate : EditorWindow
     }
 
 
-    public static bool LaunchProgramWithArguments(string programPath, string arguments, string destinationFile)
+    private static bool LaunchProgramWithArguments(string programPath, string arguments, string destinationFile)
     {
         try
         {
@@ -244,7 +243,7 @@ public class PatcherTemplate : EditorWindow
         }
     }
 
-    public static bool SaveStringToFile(string inputString, string searchString, string saveDirectory, string fileName)
+    private static bool SaveStringToFile(string inputString, string searchString, string saveDirectory, string fileName)
     {
         if (inputString.Contains(searchString))
         {
