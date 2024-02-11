@@ -115,7 +115,7 @@ namespace EditDistributor
                             }
                             else
                             {
-                                patcherToUpdate = Path.Combine(CommunFonctions.GoUpNDirs(CustomfbxPath, 2), "patcher", "Editor", "Nebbia_FT_Patcher.cs");
+                                patcherToUpdate = Path.Combine(CommunFonctions.GoUpNDirs(CustomfbxPath, 2), "patcher", "Editor", Path.GetFileNameWithoutExtension(CustomfbxPath) + "_Patcher.cs");
                             }
                         }
                         else
@@ -180,7 +180,8 @@ namespace EditDistributor
 
                 }
             }
-            UnityEngine.Debug.Log(StoreTextTog && (string.IsNullOrEmpty(CreatorName) && string.IsNullOrEmpty(StorePage) && string.IsNullOrEmpty(PackageName)));
+            UnityEngine.Debug.Log("patcher to update: " + patcherToUpdate);
+            UnityEngine.Debug.Log("Does the patcher to update exists" + File.Exists(patcherToUpdate));
 
 
             if (!File.Exists(OGfbxPath))
