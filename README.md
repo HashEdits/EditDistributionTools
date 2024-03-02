@@ -5,7 +5,7 @@
 
 This is a tool to automate and the ease the distribution of modifications of Unity 3D moddels
 
-![ ](https://cdn.discordapp.com/attachments/337986548664500236/1203413914616856576/image.png)
+![ ](https://raw.githubusercontent.com/HashEdits/EditDistributionTools/main/ReadMeFiles/header.png)
 
 Due to how curent 3D model files are set up there isn't a way to share shape-keys without being tied to a mesh. Making the process of sharing such files rather tedious or to be left to the context of a commision where sharing mesh data is in general allowed between the commisioner and the artist.
 
@@ -29,25 +29,36 @@ A modification of that 3D moddel
 
 ## How to use 😎
   
-  - Make sure both your model and your face tracked model are set up in a unity project
-  - (optional) put all of your descriptions and readme in a folder to ease the creation of pages
+A video tutorial on how to use the tool will be added down the line :bowtie:
+
+  - Make sure both your model and your face tracked model are in your unity project
+
+  - Make sure your modified model is stored in the following file structure:
+  `Assets/YourName/NameOfTheAvatar/fbx/YourCoolModel.fbx`
   
-- Open your python IDLE
-(the windows taskbar is your friend)
-- Click File -> Open
+- Acces the builder in your toolbar at
+`Tools/Hash/EditDistributor/Builder`
 
-- Navigate to where you have downloaded the repo -> FT_Builder
+- Drag and drop the prefab of the original moddel
 
-- Press F5
+- Drag and drop the prefab of the modified moddel
 
-- Follow the instructions
+	- (optional) change the distribution name if you don't want to use the name of the original moddel
 
-## Exemple 📑
+- Enter your name
+
+- Enter the name of the original package that end users will import in their projects
+
+	- (optional) gather up your descriptions and readme files in a folder to ease the creation of the store pages pages and fill in the relevent information
+
+- Hit the `Build` button
+
+## description generator 📑
 You'll find an exemple readme in **Description&ReadMeExemples** that you can bundle with your avatar's package to let the customer know what to do with it.
 There's also an exemple description there.
 in summary any of the following:
 
-`/*AVATAR NAME*/`,`/*AVATAR AUTHOR*/`, `/*StoreLink*/`, `/*PACKAGE NAME*/`, `/*DIR PATCHER*/`, `/*DIR PREFAB*/`
+`/*AVATAR NAME*/`,`/*AVATAR AUTHOR*/`, `/*StoreLink*/`, `/*PACKAGE NAME*/`, `/*DIR PATCHER*/`, `/*DIR PREFAB*/`, `/*DIR PATCHER*/`
 
 will be remplaced by something that makes sense in for your project
 
