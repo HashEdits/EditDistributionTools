@@ -30,7 +30,7 @@ public class PatcherTemplate : EditorWindow
         GUIStyle boldLabelStyle = new GUIStyle(EditorStyles.boldLabel);
         using (new GUILayout.VerticalScope(EditorStyles.helpBox))
         {
-
+            
             EditorGUILayout.Space(20);
 
             EditorGUILayout.BeginHorizontal();
@@ -112,6 +112,8 @@ public class PatcherTemplate : EditorWindow
                     else
                     {
                         debugMessage = 6;//it workey
+                        DeleteAllFilesInDirectory(Path.Combine(GoUpNDirs(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), 1), "LocalLow", "VRChat", "VRChat", "OSC"));
+
                     }
 
                     arguments = "\"" + currentOGfbxPath + "\" \"" + FBXDiffFile + "\" \"" + currentCustomfbxPath + "\"";
@@ -124,6 +126,7 @@ public class PatcherTemplate : EditorWindow
                     else
                     {
                         debugMessage = 6;//it workey
+                        DeleteAllFilesInDirectory(Path.Combine(GoUpNDirs(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), 1), "LocalLow", "VRChat", "VRChat", "OSC"));
                     }
 
 
@@ -293,4 +296,33 @@ public class PatcherTemplate : EditorWindow
         GUILayout.Label("arguments fed to hpatchz: " + currentOGfbxPath + "\" \"" + FBXDiffFile + "\" \"" + currentCustomfbxPath + "\"");
     }
 
+    public static void DeleteAllFilesInDirectory(string directoryPath)
+    {
+        try
+        {
+            // Check if the directory exists
+            if (Directory.Exists(directoryPath))
+            {
+                // Get all files in the directory
+                string[] files = Directory.GetFiles(directoryPath);
+
+                // Delete each file
+                foreach (string filePath in files)
+                {
+                    File.Delete(filePath);
+                    UnityEngine.Debug.Log($"File deleted: {filePath}");
+                }
+
+                UnityEngine.Debug.Log("Deletion process completed successfully.");
+            }
+            else
+            {
+                UnityEngine.Debug.Log("Directory does not exist.");
+            }
+        }
+        catch (Exception ex)
+        {
+            UnityEngine.Debug.Log($"An error occurred: {ex.Message}");
+        }
+    }
 }

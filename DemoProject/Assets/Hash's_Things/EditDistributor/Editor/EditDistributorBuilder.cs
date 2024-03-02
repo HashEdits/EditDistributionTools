@@ -239,15 +239,15 @@ namespace EditDistributor {
                         StorePage = EditorGUILayout.TextField("StorePage ", StorePage);
 
                         //preparing the paterns to feed in the search and remplace algo
-                        searchPatterns = new string[] { @"/*AVATAR AUTHOR*/", @"/*StoreLink*/", @"/*AVATAR NAME*/", @"/*PACKAGE NAME*/", @"/*DIR PREFAB*/" };
+                        searchPatterns = new string[] { @"/*AVATAR AUTHOR*/", @"/*StoreLink*/", @"/*AVATAR NAME*/", @"/*PACKAGE NAME*/", @"/*DIR PREFAB*/", @"/*DIR PATCHER*/" };
                         if (NameOverwriteTickBox) {
                             if (string.IsNullOrEmpty(DistributionNameOverwriteText))
                             {
                                 //string is empty, don't even try, just wait for the error
                             }
-                            else replacementValues = new string[] { CreatorName, StorePage, DistributionNameOverwriteText, PackageName, "Assets" + CommunFonctions.GetRelativePathToAssets(Path.Combine(CommunFonctions.GoUpNDirs(CustomfbxPath, 3), DistributionNameOverwriteText, "prefab")) };
+                            else replacementValues = new string[] { CreatorName, StorePage, DistributionNameOverwriteText, PackageName, "Assets" + CommunFonctions.GetRelativePathToAssets(Path.Combine(CommunFonctions.GoUpNDirs(CustomfbxPath, 3), DistributionNameOverwriteText, "prefab")), EditorWindowPath };
                         }
-                        else replacementValues = new string[] { CreatorName, StorePage, Path.GetFileNameWithoutExtension(OGfbxPath), PackageName, "Assets" + CommunFonctions.GetRelativePathToAssets(Path.Combine(CommunFonctions.GoUpNDirs(CustomfbxPath, 2), "prefab")) };
+                        else replacementValues = new string[] { CreatorName, StorePage, Path.GetFileNameWithoutExtension(OGfbxPath), PackageName, "Assets" + CommunFonctions.GetRelativePathToAssets(Path.Combine(CommunFonctions.GoUpNDirs(CustomfbxPath, 2), "prefab")), EditorWindowPath };
 
                     }
                 }
