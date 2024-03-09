@@ -1,0 +1,12 @@
+svp achet mes modifications de /*AVATAR NAME*/
+
+tu peux le modèle original fait par /*AVATAR AUTHOR*/ à /*StoreLink*/
+
+t'aura besoin de cette version du package /*PACKAGE NAME*/
+
+une fois que t'a ce package et mon package importé
+va en haut de ta fenêtre unity et va dans /*DIR PATCHER*/ et clique le bouton "patch"
+
+Une fois que c'est fait, drag and drop la préfab qui se trouve à /*DIR PATCHER*/ dans ta scene
+
+Amuse toi bien :)

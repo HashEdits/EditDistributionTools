@@ -1,0 +1,12 @@
+svp achet mes modifications de BlenderCube
+
+tu peux le modèle original fait par Deez à deez.booth.pm
+
+t'aura besoin de cette version du package SampleCube v1.0.unitypackage
+
+une fois que t'a ce package et mon package importé
+va en haut de ta fenêtre unity et va dans Tools/Hash/BlenderCubePatcher et clique le bouton "patch"
+
+Une fois que c'est fait, drag and drop la préfab qui se trouve à Tools/Hash/BlenderCubePatcher dans ta scene
+
+Amuse toi bien :)

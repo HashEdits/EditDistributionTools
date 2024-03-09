@@ -35,7 +35,7 @@ public class PatcherTemplate : EditorWindow
 
             EditorGUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
-            GUILayout.Label("@DistributionCreator" + "'s "+ "@AvatarName", boldLabelStyle);
+            GUILayout.Label(@"DistributionCreator" + "'s "+ @"AvatarName", boldLabelStyle);
             GUILayout.FlexibleSpace();
             EditorGUILayout.EndHorizontal();
 

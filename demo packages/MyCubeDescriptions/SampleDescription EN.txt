@@ -1,0 +1,12 @@
+plz buy my kewl modification of BlenderCube
+
+you can get the original moddel by Deez at deez.booth.pm
+
+you need to have this sepcific version of the package: SampleCube v1.0.unitypackage
+
+once you have the original package and my package imported,
+go at the top of your unity window and go to Tools/Hash/BlenderCubePatcher and click patch
+
+once that is done, drag and drop the prefab located at Tools/Hash/BlenderCubePatcher in your scene
+
+and enjoy :)

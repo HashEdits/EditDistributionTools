@@ -12,7 +12,7 @@ public class ModifiedBlenderCube_Patcher : EditorWindow
     private static string OGfbxPath = @"DemoCreator/BlenderCube/fbx/BlenderCube.fbx";
     private static string CustomfbxPath = @"Hash's_Things/MyModifiedBlenderCube/fbx/ModifiedBlenderCube.fbx";
     private byte debugMessage = 0;
-    private static string AvatarVersion = @"SampleCube.unitypackage";
+    private static string AvatarVersion = @"SampleCube v1.0.unitypackage";
     private bool PatchButtonHasBeenPressed = false;
 
     [MenuItem(@"Tools/Hash/BlenderCubePatcher")]
@@ -35,7 +35,7 @@ public class ModifiedBlenderCube_Patcher : EditorWindow
 
             EditorGUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
-            GUILayout.Label("@Hash" + "'s "+ "@BlenderCube", boldLabelStyle);
+            GUILayout.Label(@"Hash" + "'s "+ @"BlenderCube", boldLabelStyle);
             GUILayout.FlexibleSpace();
             EditorGUILayout.EndHorizontal();
 

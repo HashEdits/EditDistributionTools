@@ -1,0 +1,12 @@
+plz buy my kewl modification of /*AVATAR NAME*/
+
+you can get the original moddel by /*AVATAR AUTHOR*/ at /*StoreLink*/
+
+you need to have this sepcific version of the package: /*PACKAGE NAME*/
+
+once you have the original package and my package imported,
+go at the top of your unity window and go to /*DIR PATCHER*/ and click patch
+
+once that is done, drag and drop the prefab located at /*DIR PATCHER*/ in your scene
+
+and enjoy :)
