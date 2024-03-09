@@ -29,7 +29,7 @@ A modification of that 3D moddel
 
 ## How to use 😎
   
-A video tutorial on how to use the tool will be added down the line :bowtie:
+[![da tutorial](https://raw.githubusercontent.com/HashEdits/EditDistributionTools/main/ReadMeFiles/distribution_tools_thumbnail.png)](https://youtu.be/Scs3xrX7tCA?si=SA96iIs4U9auXUEA)
 
   - Make sure both your model and your face tracked model are in your unity project
 
