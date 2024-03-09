@@ -9,16 +9,16 @@ using System.Collections;
 public class ModifiedBlenderCube_Patcher : EditorWindow
 {
     private static bool Debug = false;
-    private static string OGfbxPath = "DemoCreator/BlenderCube/fbx/BlenderCube.fbx";
-    private static string CustomfbxPath = "Hash's_Things/MyModifiedBlenderCube/fbx/ModifiedBlenderCube.fbx";
+    private static string OGfbxPath = @"DemoCreator/BlenderCube/fbx/BlenderCube.fbx";
+    private static string CustomfbxPath = @"Hash's_Things/MyModifiedBlenderCube/fbx/ModifiedBlenderCube.fbx";
     private byte debugMessage = 0;
-    private static string AvatarVersion = "SampleCube.unitypackage";
+    private static string AvatarVersion = @"SampleCube.unitypackage";
     private bool PatchButtonHasBeenPressed = false;
 
-    [MenuItem("Tools/Hash/BlenderCube/BlenderCubePatcher")]
+    [MenuItem(@"Tools/Hash/BlenderCubePatcher")]
     public static void ShowWindow()
     {
-        ModifiedBlenderCube_Patcher window = GetWindow<ModifiedBlenderCube_Patcher>("ModifiedBlenderCube_Patcher");
+        ModifiedBlenderCube_Patcher window = GetWindow<ModifiedBlenderCube_Patcher>(@"ModifiedBlenderCube_Patcher");
         if (!Debug) window.maxSize = new Vector2(442, 223);
         if (Debug) window.maxSize = new Vector2(1000, 700);
         window.Show();
@@ -30,12 +30,12 @@ public class ModifiedBlenderCube_Patcher : EditorWindow
         GUIStyle boldLabelStyle = new GUIStyle(EditorStyles.boldLabel);
         using (new GUILayout.VerticalScope(EditorStyles.helpBox))
         {
-
+            
             EditorGUILayout.Space(20);
 
             EditorGUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
-            GUILayout.Label("Hash" + "'s "+ "BlenderCube", boldLabelStyle);
+            GUILayout.Label("@Hash" + "'s "+ "@BlenderCube", boldLabelStyle);
             GUILayout.FlexibleSpace();
             EditorGUILayout.EndHorizontal();
 
@@ -112,6 +112,8 @@ public class ModifiedBlenderCube_Patcher : EditorWindow
                     else
                     {
                         debugMessage = 6;//it workey
+                        DeleteAllFilesInDirectory(Path.Combine(GoUpNDirs(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), 1), "LocalLow", "VRChat", "VRChat", "OSC"));
+
                     }
 
                     arguments = "\"" + currentOGfbxPath + "\" \"" + FBXDiffFile + "\" \"" + currentCustomfbxPath + "\"";
@@ -124,6 +126,7 @@ public class ModifiedBlenderCube_Patcher : EditorWindow
                     else
                     {
                         debugMessage = 6;//it workey
+                        DeleteAllFilesInDirectory(Path.Combine(GoUpNDirs(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), 1), "LocalLow", "VRChat", "VRChat", "OSC"));
                     }
 
 
@@ -293,4 +296,33 @@ public class ModifiedBlenderCube_Patcher : EditorWindow
         GUILayout.Label("arguments fed to hpatchz: " + currentOGfbxPath + "\" \"" + FBXDiffFile + "\" \"" + currentCustomfbxPath + "\"");
     }
 
+    public static void DeleteAllFilesInDirectory(string directoryPath)
+    {
+        try
+        {
+            // Check if the directory exists
+            if (Directory.Exists(directoryPath))
+            {
+                // Get all files in the directory
+                string[] files = Directory.GetFiles(directoryPath);
+
+                // Delete each file
+                foreach (string filePath in files)
+                {
+                    File.Delete(filePath);
+                    UnityEngine.Debug.Log($"File deleted: {filePath}");
+                }
+
+                UnityEngine.Debug.Log("Deletion process completed successfully.");
+            }
+            else
+            {
+                UnityEngine.Debug.Log("Directory does not exist.");
+            }
+        }
+        catch (Exception ex)
+        {
+            UnityEngine.Debug.Log($"An error occurred: {ex.Message}");
+        }
+    }
 }

@@ -9,16 +9,16 @@ using System.Collections;
 public class PatcherTemplate : EditorWindow
 {
     private static bool Debug = false;
-    private static string OGfbxPath = "YourCoolAvatar";
-    private static string CustomfbxPath = "YourCoolCustomAvatar";
+    private static string OGfbxPath = @"YourCoolAvatar";
+    private static string CustomfbxPath = @"YourCoolCustomAvatar";
     private byte debugMessage = 0;
-    private static string AvatarVersion = "CurrentPackageVersion";
+    private static string AvatarVersion = @"CurrentPackageVersion";
     private bool PatchButtonHasBeenPressed = false;
 
-    [MenuItem("Tools/Hash/EditDistributor/(DO_NOT_USE)")]
+    [MenuItem(@"Tools/Hash/EditDistributor/(DO_NOT_USE)")]
     public static void ShowWindow()
     {
-        PatcherTemplate window = GetWindow<PatcherTemplate>("NameOfWindow");
+        PatcherTemplate window = GetWindow<PatcherTemplate>(@"NameOfWindow");
         if (!Debug) window.maxSize = new Vector2(442, 223);
         if (Debug) window.maxSize = new Vector2(1000, 700);
         window.Show();
@@ -35,7 +35,7 @@ public class PatcherTemplate : EditorWindow
 
             EditorGUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
-            GUILayout.Label("DistributionCreator" + "'s "+ "AvatarName", boldLabelStyle);
+            GUILayout.Label("@DistributionCreator" + "'s "+ "@AvatarName", boldLabelStyle);
             GUILayout.FlexibleSpace();
             EditorGUILayout.EndHorizontal();
 

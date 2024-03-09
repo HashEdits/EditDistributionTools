@@ -134,14 +134,7 @@ namespace EditDistributor {
                                 PatcherScriptDestDir = Path.Combine(CommunFonctions.GoUpNDirs(outputDirectory, 2), "Editor", Path.GetFileNameWithoutExtension(CustomfbxPath).Replace(" ", "_") + "_Patcher.cs");
                                 if (NameOverwriteTickBox)
                                 {
-                                    if (string.IsNullOrEmpty(DistributionNameOverwriteText))
-                                    {
-                                        //string is empty, don't even try, just wait for the error
-                                    }
-                                    else
-                                    {
-                                        patcherFolder = Path.Combine(CommunFonctions.GoUpNDirs(CustomfbxPath, 3), DistributionNameOverwriteText, "patcher");
-                                    }
+                                    if (!string.IsNullOrEmpty(DistributionNameOverwriteText)) patcherFolder = Path.Combine(CommunFonctions.GoUpNDirs(CustomfbxPath, 3), DistributionNameOverwriteText, "patcher");
                                 }
                                 else patcherFolder = Path.Combine(CommunFonctions.GoUpNDirs(CustomfbxPath, 2), "patcher");
                             }
@@ -173,13 +166,9 @@ namespace EditDistributor {
                     UserEditorWindowName = EditorGUILayout.TextField("Your Name: ", UserEditorWindowName);
                     if (NameOverwriteTickBox)
                     {
-                        if (string.IsNullOrEmpty(DistributionNameOverwriteText))
-                        {
-                            //string is empty, don't even try, just wait for the error
-                        }
-                        else EditorWindowPath = "Tools/" + UserEditorWindowName + "/" + DistributionNameOverwriteText + "/" + DistributionNameOverwriteText + "Patcher";
+                        if (! string.IsNullOrEmpty(DistributionNameOverwriteText)) EditorWindowPath = "Tools/" + UserEditorWindowName + "/" + DistributionNameOverwriteText + "_Patcher";
                     }
-                    else EditorWindowPath = "Tools/" + UserEditorWindowName + "/" + Path.GetFileNameWithoutExtension(OGfbxPath) + "/" + Path.GetFileNameWithoutExtension(OGfbxPath) + "Patcher";
+                    else EditorWindowPath = "Tools/" + UserEditorWindowName + "/" + Path.GetFileNameWithoutExtension(OGfbxPath) + "Patcher";
                     if (string.IsNullOrEmpty(UserEditorWindowName))
                     {
 
@@ -241,11 +230,7 @@ namespace EditDistributor {
                         //preparing the paterns to feed in the search and remplace algo
                         searchPatterns = new string[] { @"/*AVATAR AUTHOR*/", @"/*StoreLink*/", @"/*AVATAR NAME*/", @"/*PACKAGE NAME*/", @"/*DIR PREFAB*/", @"/*DIR PATCHER*/" };
                         if (NameOverwriteTickBox) {
-                            if (string.IsNullOrEmpty(DistributionNameOverwriteText))
-                            {
-                                //string is empty, don't even try, just wait for the error
-                            }
-                            else replacementValues = new string[] { CreatorName, StorePage, DistributionNameOverwriteText, PackageName, "Assets" + CommunFonctions.GetRelativePathToAssets(Path.Combine(CommunFonctions.GoUpNDirs(CustomfbxPath, 3), DistributionNameOverwriteText, "prefab")), EditorWindowPath};
+                            if (!string.IsNullOrEmpty(DistributionNameOverwriteText)) replacementValues = new string[] { CreatorName, StorePage, DistributionNameOverwriteText, PackageName, "Assets" + CommunFonctions.GetRelativePathToAssets(Path.Combine(CommunFonctions.GoUpNDirs(CustomfbxPath, 3), DistributionNameOverwriteText, "prefab")), EditorWindowPath};
                         }
                         else replacementValues = new string[] { CreatorName, StorePage, Path.GetFileNameWithoutExtension(OGfbxPath), PackageName, "Assets" + CommunFonctions.GetRelativePathToAssets(Path.Combine(CommunFonctions.GoUpNDirs(CustomfbxPath, 2), "prefab")), EditorWindowPath};
 
@@ -428,7 +413,13 @@ namespace EditDistributor {
 
             PatcherTemplateScript = Path.Combine(Environment.CurrentDirectory, "Assets", "Hash's_Things", "EditDistributor", "Editor", "PatcherTemplate.cs");
 
-            PatcherScriptDestDir = Path.Combine(CommunFonctions.GoUpNDirs(outputDirectory, 2), "Editor", Path.GetFileNameWithoutExtension(CustomfbxPath).Replace(" ", "_") + "_Patcher.cs");
+            if (NameOverwriteTickBox)
+            {
+                if (!string.IsNullOrEmpty(DistributionNameOverwriteText)) remplacementStrings = new string[] { CommunFonctions.GetRelativePathToAssets(OGfbxPath), CommunFonctions.GetRelativePathToAssets(CustomfbxPath), DistributionNameOverwriteText + "_Patcher", DistributionNameOverwriteText + "_Patcher", EditorWindowPath, UserEditorWindowName, PackageName, DistributionNameOverwriteText };
+            }
+            else PatcherScriptDestDir = Path.Combine(CommunFonctions.GoUpNDirs(outputDirectory, 2), "Editor", Path.GetFileNameWithoutExtension(CustomfbxPath).Replace(" ", "_") + "_Patcher.cs");
+
+
             Directory.CreateDirectory(CommunFonctions.GoUpNDirs(PatcherScriptDestDir, 1));
             CommunFonctions.CheckAndCopyFileIfExists(hpatchz, hpatchzDestDir);
             CommunFonctions.CheckAndCopyFileIfExists(hpatchzlicence, hpatchzLicenceDestDir);
@@ -438,11 +429,7 @@ namespace EditDistributor {
             string[] originalStrings = new string[] { "YourCoolAvatar", "YourCoolCustomAvatar", "NameOfWindow", "PatcherTemplate", "Tools/Hash/EditDistributor/(DO_NOT_USE)", "DistributionCreator", "CurrentPackageVersion", "AvatarName" };
             if (NameOverwriteTickBox)
             {
-                if (string.IsNullOrEmpty(DistributionNameOverwriteText))
-                {
-                    //string is empty, don't even try, just wait for the error
-                }
-                else remplacementStrings = new string[] { CommunFonctions.GetRelativePathToAssets(OGfbxPath), CommunFonctions.GetRelativePathToAssets(CustomfbxPath), Path.GetFileNameWithoutExtension(CustomfbxPath).Replace(" ", "_") + "_Patcher", Path.GetFileNameWithoutExtension(CustomfbxPath).Replace(" ", "_") + "_Patcher", EditorWindowPath, UserEditorWindowName, PackageName, DistributionNameOverwriteText };
+                if (!string.IsNullOrEmpty(DistributionNameOverwriteText)) remplacementStrings = new string[] { CommunFonctions.GetRelativePathToAssets(OGfbxPath), CommunFonctions.GetRelativePathToAssets(CustomfbxPath), DistributionNameOverwriteText + "_Patcher", DistributionNameOverwriteText + "_Patcher", EditorWindowPath, UserEditorWindowName, PackageName, DistributionNameOverwriteText };
             }
             else remplacementStrings = new string[] { CommunFonctions.GetRelativePathToAssets(OGfbxPath), CommunFonctions.GetRelativePathToAssets(CustomfbxPath), Path.GetFileNameWithoutExtension(CustomfbxPath).Replace(" ", "_") + "_Patcher", Path.GetFileNameWithoutExtension(CustomfbxPath).Replace(" ", "_") + "_Patcher", EditorWindowPath, UserEditorWindowName, PackageName, Path.GetFileNameWithoutExtension(OGfbxPath) };
             UnityEngine.Debug.Log(EditorWindowPath);
