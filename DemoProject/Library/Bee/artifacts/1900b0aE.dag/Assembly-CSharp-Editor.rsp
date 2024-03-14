@@ -374,6 +374,7 @@
 "Assets/Hash's_Things/EditDistributor/Editor/EditDistributorBuilder.cs"
 "Assets/Hash's_Things/EditDistributor/Editor/EditDistributorUpdater.cs"
 "Assets/Hash's_Things/EditDistributor/Editor/PatcherTemplate.cs"
+"Assets/Hash's_Things/MyModifiedBlenderCube/patcher/Editor/ModifiedBlenderCube_Patcher.cs"
 -langversion:9.0
 
 /deterministic
