@@ -6,7 +6,12 @@
 
 This is a tool to automate and the ease the distribution of modifications of Unity 3D moddels
 
-![ ](https://raw.githubusercontent.com/HashEdits/EditDistributionTools/main/ReadMeFiles/header.png)
+
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/HashEdits/EditDistributionTools/main/ReadMeFiles/header.png" alt="Overview of the tools"/>
+</p>
+
 
 This set of tools enable you to distribute your modifications to any 3D moddels with ease.
 
@@ -59,7 +64,11 @@ A modification of that 3D moddel
 - Hit the `Build` button
 
 ## Builder🔧
-![da tutorial](https://raw.githubusercontent.com/HashEdits/EditDistributionTools/main/ReadMeFiles/Builderwindowindexwithnumbers.png)
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/HashEdits/EditDistributionTools/main/ReadMeFiles/Builderwindowindexwithnumbers.png" alt="Builder Window"/>
+</p>
+
 Number| Name| Description
 -------- | -----| -----
 1| Original model slot| A slot to drag and drop a prefab of the original moddel into (requires the moddel to have an avatar component for now) |
@@ -95,7 +104,11 @@ will be remplaced by something that makes sense in for your project
 
 You may want to update and maintain your modifications in the future, instead of having to create a whole new patcher everytime. I created an Updater tool to make the process of porting to a newer version easier
 
-![da tutorial](https://raw.githubusercontent.com/HashEdits/EditDistributionTools/main/ReadMeFiles/Updaterwindowindexwithnumbers.png)
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/HashEdits/EditDistributionTools/main/ReadMeFiles/Updaterwindowindexwithnumbers.png" alt="Updater Window"/>
+</p>
+
 
 Number| Name| Description
 -------- | -----| -----
