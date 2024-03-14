@@ -55,7 +55,7 @@ namespace EditDistributor {
             if (!Debug) window.minSize = new Vector2(290, 320);
             if (Debug) window.minSize = new Vector2(900, 530);
 
-            if (!Debug) window.maxSize = new Vector2(400, 500);
+            if (!Debug) window.maxSize = new Vector2(400, 600);
             if (Debug) window.maxSize = new Vector2(1300, 700);
             window.Show();
 
