@@ -90,7 +90,7 @@ namespace EditDistributor {
                 {
                     using (new GUILayout.HorizontalScope(EditorStyles.helpBox))
                     {
-                        OGAvatarPrefab = (GameObject)EditorGUILayout.ObjectField("Prefab original model   ->", OGAvatarPrefab, typeof(GameObject), true);
+                        OGAvatarPrefab = (GameObject)EditorGUILayout.ObjectField(new GUIContent("Prefab original model   ->", "A slot to drag and drop a prefab of the original moddel into (requires the moddel to have an avatar component for now)"), OGAvatarPrefab, typeof(GameObject), true);
 
                         if (OGAvatarPrefab != null)
                         {
@@ -116,7 +116,7 @@ namespace EditDistributor {
                     EditorGUILayout.Space(10);
                     using (new GUILayout.HorizontalScope(EditorStyles.helpBox))
                     {
-                        CustomAvatarPrefab = (GameObject)EditorGUILayout.ObjectField("Prefab modified model ->", CustomAvatarPrefab, typeof(GameObject), true);
+                        CustomAvatarPrefab = (GameObject)EditorGUILayout.ObjectField(new GUIContent("Prefab modified model ->", "A slot to drag and drop a prefab of your modified moddel into (requires the moddel to have an avatar component for now)"), CustomAvatarPrefab, typeof(GameObject), true);
 
                         if (CustomAvatarPrefab != null)
                         {
@@ -148,11 +148,11 @@ namespace EditDistributor {
 
                     EditorGUILayout.BeginHorizontal();
                     GUILayout.FlexibleSpace();
-                    EditorGUILayout.LabelField("Change distribution name?");
+                    EditorGUILayout.LabelField(new GUIContent("Change distribution name?", "Do you want to change the name of the script and menu bar?"));
                     NameOverwriteTickBox = EditorGUILayout.Toggle("", NameOverwriteTickBox);
                     GUILayout.FlexibleSpace();
                     EditorGUILayout.EndHorizontal();
-                    if (NameOverwriteTickBox) DistributionNameOverwriteText = EditorGUILayout.TextField("OverwriteName ", DistributionNameOverwriteText);
+                    if (NameOverwriteTickBox) DistributionNameOverwriteText = EditorGUILayout.TextField( new GUIContent("OverwriteName ", "Name that will be used for the patcher script and hotbar menu"), DistributionNameOverwriteText);
 
                 }
 
@@ -163,7 +163,7 @@ namespace EditDistributor {
                 using (new GUILayout.VerticalScope(EditorStyles.helpBox))
                 {
 
-                    UserEditorWindowName = EditorGUILayout.TextField("Your Name: ", UserEditorWindowName);
+                    UserEditorWindowName = EditorGUILayout.TextField(new GUIContent("Your Name: ", "Will be used to organize your patchers in the menu bar"), UserEditorWindowName);
                     if (NameOverwriteTickBox)
                     {
                         if (! string.IsNullOrEmpty(DistributionNameOverwriteText)) EditorWindowPath = "Tools/" + UserEditorWindowName + "/" + DistributionNameOverwriteText + "_Patcher";
@@ -181,7 +181,7 @@ namespace EditDistributor {
 
                     }
 
-                    PackageName = EditorGUILayout.TextField("Original package name", PackageName);
+                    PackageName = EditorGUILayout.TextField(new GUIContent("Original package name", "package that the user is expected to have in their project"), PackageName); 
                 }
 
                 EditorGUILayout.Space(10);
@@ -189,7 +189,7 @@ namespace EditDistributor {
                 {
                     EditorGUILayout.BeginHorizontal();
                     GUILayout.FlexibleSpace();
-                    EditorGUILayout.LabelField("Generate descriptions?");
+                    EditorGUILayout.LabelField(new GUIContent("Generate descriptions?", "Do you want to generate descriptions for your store pages?"));
                     StoreTextTog = EditorGUILayout.Toggle("", StoreTextTog);
                     GUILayout.FlexibleSpace();
                     EditorGUILayout.EndHorizontal();
@@ -199,11 +199,11 @@ namespace EditDistributor {
                     if (StoreTextTog)
                     {
 
-                        CommunFonctions.AddCenteredLabel("Will copy the selected folder and remplace");
+                        CommunFonctions.AddCenteredLabel("Will copy contents of folder and remplace");
 
                         EditorGUILayout.BeginHorizontal();
                         GUILayout.FlexibleSpace();
-                        if (GUILayout.Button("More info here", EditorStyles.linkLabel))
+                        if (GUILayout.Button(new GUIContent("More info here", "A link to the GutHub repo"), EditorStyles.linkLabel))
                         {
                             Application.OpenURL("https://github.com/HashEdits/Face-Tracking-Patcher?tab=readme-ov-file#exemple-");
                         }
@@ -212,20 +212,23 @@ namespace EditDistributor {
 
 
                         EditorGUILayout.Space(20);
-                        if (GUILayout.Button("Select custom folder"))
+                        if (GUILayout.Button(new GUIContent("Select folder with formated descriptions", "folder that will be copied and have all of it's .txt files searched for the specific terms and remplaced")))
                         {
                             DescriptionDir = EditorUtility.OpenFolderPanel("Select Folder", "", "");
                         }
-                        if (GUILayout.Button("Select destination"))
+                        if (GUILayout.Button(new GUIContent("Select destination folder", "folder where the remplaced files will be placed")))
                         {
                             DestinationDir = EditorUtility.OpenFolderPanel("Select Folder", "", "");
                         }
-                        EditorGUILayout.LabelField("custom desc source: ", DescriptionDir);
-                        EditorGUILayout.LabelField("custom desc dest: ", DestinationDir);
 
-                        CreatorName = EditorGUILayout.TextField("CreatorName ", CreatorName);
+                        //if (!string.IsNullOrEmpty(DescriptionDir)) EditorGUILayout.LabelField(new GUIContent("custom desc source: ", DescriptionDir), DescriptionDir);
+                        /*else*/ EditorGUILayout.LabelField("custom desc source: ", DescriptionDir);
+                        //if (!string.IsNullOrEmpty(DestinationDir)) EditorGUILayout.LabelField(new GUIContent("custom desc dest: ", DestinationDir), DestinationDir);
+                        /*else*/ EditorGUILayout.LabelField("custom desc dest: ", DestinationDir);
 
-                        StorePage = EditorGUILayout.TextField("StorePage ", StorePage);
+                        CreatorName = EditorGUILayout.TextField(new GUIContent("CreatorName ", @"All /*AVATAR AUTHOR*/ tags will be remplaced by what you put in there"), CreatorName);
+
+                        StorePage = EditorGUILayout.TextField(new GUIContent("StorePage ", @"All /*StoreLink*/ tags will be remplaced by what you put in there"), StorePage);
 
                         //preparing the paterns to feed in the search and remplace algo
                         searchPatterns = new string[] { @"/*AVATAR AUTHOR*/", @"/*StoreLink*/", @"/*AVATAR NAME*/", @"/*PACKAGE NAME*/", @"/*DIR PREFAB*/", @"/*DIR PATCHER*/" };
