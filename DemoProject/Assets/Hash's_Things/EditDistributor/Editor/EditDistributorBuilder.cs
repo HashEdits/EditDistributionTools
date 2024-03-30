@@ -409,23 +409,16 @@ namespace EditDistributor {
 
             if (File.Exists(hdiffz))
             {
-                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)){
-                    // Launch the hdiff with the constructed arguments
-                    string arguments = "\"" + OGfbxPath + "\" \"" + CustomfbxPath + "\" \"" + FBXDiffFile + "\"";
-                    CommunFonctions.LaunchProgramWithArguments(hdiffz, arguments);
-                    //we do the same for the .meta file
-                    arguments = "\"" + OGfbxPath + ".meta\" \"" + CustomfbxPath + ".meta\" \"" + MetaDiffFile + "\"";
-                    CommunFonctions.LaunchProgramWithArguments(hdiffz, arguments);
-                }
-                else
-                {
-                    // Launch the hdiff with the constructed arguments
-                    string arguments = "/" + OGfbxPath + "/" + CustomfbxPath + "/" + FBXDiffFile + "/";
-                    CommunFonctions.LaunchProgramWithArguments(hdiffz, arguments);
-                    //we do the same for the .meta file
-                    arguments = "/" + OGfbxPath + ".meta/" + CustomfbxPath + ".meta/" + MetaDiffFile + "/";
-                    CommunFonctions.LaunchProgramWithArguments(hdiffz, arguments);
-                }
+
+                // Launch the hdiff with the constructed arguments
+                string arguments = "\"" + OGfbxPath + "\" \"" + CustomfbxPath + "\" \"" + FBXDiffFile + "\"";
+
+                CommunFonctions.LaunchProgramWithArguments(hdiffz, arguments);
+                //we do the same for the .meta file
+                arguments = "\"" + OGfbxPath + ".meta\" \"" + CustomfbxPath + ".meta\" \"" + MetaDiffFile + "\"";
+                CommunFonctions.LaunchProgramWithArguments(hdiffz, arguments);
+
+
                 
             }
             else
@@ -450,12 +443,12 @@ namespace EditDistributor {
             CommunFonctions.CheckAndCopyFileIfExists(PatcherTemplateScript, PatcherScriptDestDir);
 
 
-            string[] originalStrings = new string[] { "YourCoolAvatar", "YourCoolCustomAvatar", "NameOfWindow", "PatcherTemplate", "Tools/Hash/EditDistributor/(DO_NOT_USE)", "DistributionCreator", "CurrentPackageVersion", "AvatarName" };
+            string[] originalStrings = new string[] { "\"YourCoolAvatar\"", "\"YourCoolCustomAvatar\"", "NameOfWindow", "PatcherTemplate", "Tools/Hash/EditDistributor/(DO_NOT_USE)", "DistributionCreator", "CurrentPackageVersion", "AvatarName" };
             if (NameOverwriteTickBox)
             {
-                if (!string.IsNullOrEmpty(DistributionNameOverwriteText)) remplacementStrings = new string[] { CommunFonctions.GetRelativePathToAssets(OGfbxPath), CommunFonctions.GetRelativePathToAssets(CustomfbxPath), DistributionNameOverwriteText + "_Patcher", DistributionNameOverwriteText + "_Patcher", EditorWindowPath, UserEditorWindowName, PackageName, DistributionNameOverwriteText };
+                if (!string.IsNullOrEmpty(DistributionNameOverwriteText)) remplacementStrings = new string[] { CommunFonctions.MakePathPlatformAgnostic(CommunFonctions.GetRelativePathToAssets(OGfbxPath)), CommunFonctions.MakePathPlatformAgnostic(CommunFonctions.GetRelativePathToAssets(CustomfbxPath)), DistributionNameOverwriteText + "_Patcher", DistributionNameOverwriteText + "_Patcher", EditorWindowPath, UserEditorWindowName, PackageName, DistributionNameOverwriteText };
             }
-            else remplacementStrings = new string[] { CommunFonctions.GetRelativePathToAssets(OGfbxPath), CommunFonctions.GetRelativePathToAssets(CustomfbxPath), Path.GetFileNameWithoutExtension(CustomfbxPath).Replace(" ", "_") + "_Patcher", Path.GetFileNameWithoutExtension(CustomfbxPath).Replace(" ", "_") + "_Patcher", EditorWindowPath, UserEditorWindowName, PackageName, Path.GetFileNameWithoutExtension(OGfbxPath) };
+            else remplacementStrings = new string[] { CommunFonctions.MakePathPlatformAgnostic(CommunFonctions.GetRelativePathToAssets(OGfbxPath)), CommunFonctions.MakePathPlatformAgnostic(CommunFonctions.GetRelativePathToAssets(CustomfbxPath)), Path.GetFileNameWithoutExtension(CustomfbxPath).Replace(" ", "_") + "_Patcher", Path.GetFileNameWithoutExtension(CustomfbxPath).Replace(" ", "_") + "_Patcher", EditorWindowPath, UserEditorWindowName, PackageName, Path.GetFileNameWithoutExtension(OGfbxPath) };
             UnityEngine.Debug.Log(EditorWindowPath);
             CommunFonctions.ReplaceStringsInFile(PatcherScriptDestDir, originalStrings, remplacementStrings);
 

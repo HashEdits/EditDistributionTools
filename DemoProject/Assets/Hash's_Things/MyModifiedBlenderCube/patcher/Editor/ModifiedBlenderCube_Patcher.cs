@@ -10,8 +10,8 @@ using System.Runtime.InteropServices;
 public class ModifiedBlenderCube_Patcher : EditorWindow
 {
     private static bool Debug = false;
-    private static string OGfbxPath = @"DemoCreator/BlenderCube/fbx/BlenderCube.fbx";
-    private static string CustomfbxPath = @"Hash's_Things/MyModifiedBlenderCube/fbx/ModifiedBlenderCube.fbx";
+    private static string OGfbxPath = @"DemoCreator" + Path.DirectorySeparatorChar + @"BlenderCube" + Path.DirectorySeparatorChar + @"fbx" + Path.DirectorySeparatorChar + @"BlenderCube.fbx";
+    private static string CustomfbxPath = @"Hash's_Things" + Path.DirectorySeparatorChar + @"MyModifiedBlenderCube" + Path.DirectorySeparatorChar + @"fbx" + Path.DirectorySeparatorChar + @"ModifiedBlenderCube.fbx";
     private byte debugMessage = 0;
     private static string AvatarVersion = @"SampleCube v1.0.unitypackage";
     private bool PatchButtonHasBeenPressed = false;
@@ -40,9 +40,9 @@ public class ModifiedBlenderCube_Patcher : EditorWindow
             GUILayout.FlexibleSpace();
             EditorGUILayout.EndHorizontal();
 
-            string currentOGfbxPath = Application.dataPath + "/" + OGfbxPath;
+            string currentOGfbxPath = Path.Combine(Application.dataPath, OGfbxPath);
 
-            string currentCustomfbxPath = Application.dataPath + "/" + CustomfbxPath;
+            string currentCustomfbxPath = Path.Combine(Application.dataPath, CustomfbxPath);
 
             string hpatchz = "";
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) hpatchz = Path.Combine(GoUpNDirs(currentCustomfbxPath, 2), "patcher", "data", "hdiff", "hpatchz", "Windows", "hpatchz.exe");
@@ -197,16 +197,10 @@ public class ModifiedBlenderCube_Patcher : EditorWindow
 
     private static string GoUpNDirs(string MyDir, int n)
     {
-        MyDir = Path.GetFullPath(MyDir);
-        string[] pathComponents = MyDir.Split('\\');
-        if (pathComponents.Length >= n)
-        {
-
-            string parentPath = string.Join("\\", pathComponents, 0, pathComponents.Length - n);
-            return Path.Combine(parentPath);
-        }
-        else return string.Empty;
-
+        MyDir = MyDir.TrimEnd(Path.PathSeparator);
+        for (var i = 0; i < n; i++)
+            MyDir = Path.GetDirectoryName(MyDir);
+        return MyDir;
     }
 
 

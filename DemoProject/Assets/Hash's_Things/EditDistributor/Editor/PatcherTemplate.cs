@@ -10,8 +10,8 @@ using System.Runtime.InteropServices;
 public class PatcherTemplate : EditorWindow
 {
     private static bool Debug = false;
-    private static string OGfbxPath = @"YourCoolAvatar";
-    private static string CustomfbxPath = @"YourCoolCustomAvatar";
+    private static string OGfbxPath = "YourCoolAvatar";
+    private static string CustomfbxPath = "YourCoolCustomAvatar";
     private byte debugMessage = 0;
     private static string AvatarVersion = @"CurrentPackageVersion";
     private bool PatchButtonHasBeenPressed = false;
@@ -40,9 +40,9 @@ public class PatcherTemplate : EditorWindow
             GUILayout.FlexibleSpace();
             EditorGUILayout.EndHorizontal();
 
-            string currentOGfbxPath = Application.dataPath + "/" + OGfbxPath;
+            string currentOGfbxPath = Path.Combine(Application.dataPath, OGfbxPath);
 
-            string currentCustomfbxPath = Application.dataPath + "/" + CustomfbxPath;
+            string currentCustomfbxPath = Path.Combine(Application.dataPath, CustomfbxPath);
 
             string hpatchz = "";
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) hpatchz = Path.Combine(GoUpNDirs(currentCustomfbxPath, 2), "patcher", "data", "hdiff", "hpatchz", "Windows", "hpatchz.exe");
@@ -197,16 +197,10 @@ public class PatcherTemplate : EditorWindow
 
     private static string GoUpNDirs(string MyDir, int n)
     {
-        MyDir = Path.GetFullPath(MyDir);
-        string[] pathComponents = MyDir.Split('\\');
-        if (pathComponents.Length >= n)
-        {
-
-            string parentPath = string.Join("\\", pathComponents, 0, pathComponents.Length - n);
-            return Path.Combine(parentPath);
-        }
-        else return string.Empty;
-
+        MyDir = MyDir.TrimEnd(Path.PathSeparator);
+        for (var i = 0; i < n; i++)
+            MyDir = Path.GetDirectoryName(MyDir);
+        return MyDir;
     }
 
 

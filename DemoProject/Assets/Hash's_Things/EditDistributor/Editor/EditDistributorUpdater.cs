@@ -302,24 +302,14 @@ namespace EditDistributor
 
             if (File.Exists(hdiffz))
             {
-                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-                {
-                    // Launch the hdiff with the constructed arguments
-                    string arguments = "\"" + OGfbxPath + "\" \"" + CustomfbxPath + "\" \"" + FBXDiffFile + "\"";
-                    CommunFonctions.LaunchProgramWithArguments(hdiffz, arguments);
-                    //we do the same for the .meta file
-                    arguments = "\"" + OGfbxPath + ".meta\" \"" + CustomfbxPath + ".meta\" \"" + MetaDiffFile + "\"";
-                    CommunFonctions.LaunchProgramWithArguments(hdiffz, arguments);
-                }
-                else
-                {
-                    // Launch the hdiff with the constructed arguments
-                    string arguments = "/" + OGfbxPath + "/" + CustomfbxPath + "/" + FBXDiffFile + "/";
-                    CommunFonctions.LaunchProgramWithArguments(hdiffz, arguments);
-                    //we do the same for the .meta file
-                    arguments = "/" + OGfbxPath + ".meta/" + CustomfbxPath + ".meta/" + MetaDiffFile + "/";
-                    CommunFonctions.LaunchProgramWithArguments(hdiffz, arguments);
-                }
+
+                // Launch the hdiff with the constructed arguments
+                string arguments = "\"" + OGfbxPath + "\" \"" + CustomfbxPath + "\" \"" + FBXDiffFile + "\"";
+                CommunFonctions.LaunchProgramWithArguments(hdiffz, arguments);
+                //we do the same for the .meta file
+                arguments = "\"" + OGfbxPath + ".meta\" \"" + CustomfbxPath + ".meta\" \"" + MetaDiffFile + "\"";
+                CommunFonctions.LaunchProgramWithArguments(hdiffz, arguments);
+
 
 
             }

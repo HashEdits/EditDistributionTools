@@ -309,16 +309,10 @@ namespace EditDistributor
 
         public static string GoUpNDirs(string MyDir, int n)
         {
-            MyDir = Path.GetFullPath(MyDir);
-            string[] pathComponents = MyDir.Split('\\');
-            if (pathComponents.Length >= n)
-            {
-
-                string parentPath = string.Join("\\", pathComponents, 0, pathComponents.Length - n);
-                return Path.Combine(parentPath);
-            }
-            else return string.Empty;
-
+            MyDir = MyDir.TrimEnd(Path.PathSeparator);
+            for (var i = 0; i < n; i++)
+                MyDir = Path.GetDirectoryName(MyDir);
+            return MyDir;
         }
 
         public static string GetRelativePathToAssets(string fullPath)
@@ -391,6 +385,26 @@ namespace EditDistributor
                 string destSubDir = Path.Combine(destDir, Path.GetFileName(subDir));
                 CopyFolder(subDir, destSubDir);
             }
+        }
+
+        public static string MakePathPlatformAgnostic(string proprietaryPath)
+        {
+            // Split the input string by '/'
+            string[] parts = proprietaryPath.Split(Path.AltDirectorySeparatorChar);
+
+            // Join the parts with proper formatting
+            string platformAgnosticPath = "";
+            for (int i = 0; i < parts.Length; i++)
+            {
+                // Add each part enclosed in @"" and concatenate with + Path.PathSeparator +
+                platformAgnosticPath += "@\"" + parts[i] + "\"";
+
+                // Append Path.PathSeparator + if it's not the last part
+                if (i < parts.Length - 1)
+                    platformAgnosticPath += " + Path.DirectorySeparatorChar + ";
+            }
+
+            return platformAgnosticPath;
         }
     }
 
