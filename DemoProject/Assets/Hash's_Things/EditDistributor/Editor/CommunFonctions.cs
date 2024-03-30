@@ -369,6 +369,31 @@ namespace EditDistributor
             }
         }
 
+
+
+        public static void CopyFolder(string sourceDir, string destDir)
+        {
+            if (!Directory.Exists(destDir))
+            {
+                Directory.CreateDirectory(destDir);
+            }
+
+            // Copy files
+            foreach (string file in Directory.GetFiles(sourceDir))
+            {
+                string destFile = Path.Combine(destDir, Path.GetFileName(file));
+                CheckAndCopyFileIfExists(file, destFile);
+            }
+
+            // Recursively copy subdirectories
+            foreach (string subDir in Directory.GetDirectories(sourceDir))
+            {
+                string destSubDir = Path.Combine(destDir, Path.GetFileName(subDir));
+                CopyFolder(subDir, destSubDir);
+            }
+        }
     }
+
+
 
 }

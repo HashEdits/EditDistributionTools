@@ -5,6 +5,7 @@ using System.IO;
 using System.Text.RegularExpressions;
 using System.Diagnostics;
 using System.Collections;
+using System.Runtime.InteropServices;
 
 namespace EditDistributor { 
 
@@ -390,29 +391,50 @@ namespace EditDistributor {
         
             Directory.CreateDirectory(outputDirectory);
 
-            hdiffz = Path.Combine(Environment.CurrentDirectory, "Assets", "Hash's_Things", "EditDistributor", "hdiff", "hdiffz.exe");
-            hpatchz = Path.Combine(Environment.CurrentDirectory, "Assets", "Hash's_Things", "EditDistributor", "hdiff", "hpatchz.exe");
-            string hpatchzlicence = Path.Combine(Environment.CurrentDirectory, "Assets", "Hash's_Things", "EditDistributor", "hdiff", "License.txt");
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)){
+                hdiffz = Path.Combine(Environment.CurrentDirectory, "Assets", "Hash's_Things", "EditDistributor", "hdiff", "hdiffz", "Windows", "hdiffz.exe");
+                hpatchz = Path.Combine(Environment.CurrentDirectory, "Assets", "Hash's_Things", "EditDistributor", "hdiff", "hpatchz", "Windows", "hpatchz.exe");
+            }
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux)) {
+                hdiffz = Path.Combine(Environment.CurrentDirectory, "Assets", "Hash's_Things", "EditDistributor", "hdiff", "hdiffz", "Linux", "hdiffz");
+                hpatchz = Path.Combine(Environment.CurrentDirectory, "Assets", "Hash's_Things", "EditDistributor", "hdiff", "hpatchz", "Linux", "hpatchz");
+            }
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX)) {
+                hdiffz = Path.Combine(Environment.CurrentDirectory, "Assets", "Hash's_Things", "EditDistributor", "hdiff", "hdiffz", "Mac", "hdiffz");
+                hpatchz = Path.Combine(Environment.CurrentDirectory, "Assets", "Hash's_Things", "EditDistributor", "hdiff", "hpatchz", "Mac", "hpatchz");
+            }
+            string hdiffzFolder = Path.Combine(Environment.CurrentDirectory, "Assets", "Hash's_Things", "EditDistributor", "hdiff", "hpatchz");
             FBXDiffFile = Path.Combine(outputDirectory, Path.GetFileNameWithoutExtension(OGfbxPath).Replace(" ", "_") + ".hdiff");
             MetaDiffFile = Path.Combine(outputDirectory, Path.GetFileNameWithoutExtension(OGfbxPath).Replace(" ", "_") + "Meta.hdiff");
 
             if (File.Exists(hdiffz))
             {
-                // Launch the hdiff with the constructed arguments
-                string arguments = "\"" + OGfbxPath + "\" \"" + CustomfbxPath+ "\" \"" +  FBXDiffFile+ "\"";
-                CommunFonctions.LaunchProgramWithArguments(hdiffz, arguments);
-                //we do the same for the .meta file
-                arguments = "\"" + OGfbxPath + ".meta\" \"" + CustomfbxPath + ".meta\" \"" + MetaDiffFile + "\"";
-                CommunFonctions.LaunchProgramWithArguments(hdiffz, arguments);
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)){
+                    // Launch the hdiff with the constructed arguments
+                    string arguments = "\"" + OGfbxPath + "\" \"" + CustomfbxPath + "\" \"" + FBXDiffFile + "\"";
+                    CommunFonctions.LaunchProgramWithArguments(hdiffz, arguments);
+                    //we do the same for the .meta file
+                    arguments = "\"" + OGfbxPath + ".meta\" \"" + CustomfbxPath + ".meta\" \"" + MetaDiffFile + "\"";
+                    CommunFonctions.LaunchProgramWithArguments(hdiffz, arguments);
+                }
+                else
+                {
+                    // Launch the hdiff with the constructed arguments
+                    string arguments = "/" + OGfbxPath + "/" + CustomfbxPath + "/" + FBXDiffFile + "/";
+                    CommunFonctions.LaunchProgramWithArguments(hdiffz, arguments);
+                    //we do the same for the .meta file
+                    arguments = "/" + OGfbxPath + ".meta/" + CustomfbxPath + ".meta/" + MetaDiffFile + "/";
+                    CommunFonctions.LaunchProgramWithArguments(hdiffz, arguments);
+                }
+                
             }
             else
             {
                 UnityEngine.Debug.Log("please make sure you have hdiffz.exe in: " + hdiffz);//need to add to the list of errors                                                                 /!\ todo /!\
             }
 
-            hpatchzDestDir = Path.Combine(CommunFonctions.GoUpNDirs(outputDirectory, 1), "hdiff", "hpatchz.exe");
-            string hpatchzLicenceDestDir = Path.Combine(CommunFonctions.GoUpNDirs(outputDirectory, 1), "hdiff", "License.txt");
-            Directory.CreateDirectory(CommunFonctions.GoUpNDirs(hpatchzDestDir, 1));
+            hpatchzDestDir = Path.Combine(CommunFonctions.GoUpNDirs(outputDirectory, 1), "hdiff", "hpatchz");
+            Directory.CreateDirectory(hpatchzDestDir);
 
             PatcherTemplateScript = Path.Combine(Environment.CurrentDirectory, "Assets", "Hash's_Things", "EditDistributor", "Editor", "PatcherTemplate.cs");
 
@@ -424,8 +446,7 @@ namespace EditDistributor {
 
 
             Directory.CreateDirectory(CommunFonctions.GoUpNDirs(PatcherScriptDestDir, 1));
-            CommunFonctions.CheckAndCopyFileIfExists(hpatchz, hpatchzDestDir);
-            CommunFonctions.CheckAndCopyFileIfExists(hpatchzlicence, hpatchzLicenceDestDir);
+            CommunFonctions.CopyFolder(hdiffzFolder, hpatchzDestDir);
             CommunFonctions.CheckAndCopyFileIfExists(PatcherTemplateScript, PatcherScriptDestDir);
 
 

@@ -5,6 +5,7 @@ using System;
 using System.IO;
 using System.Diagnostics;
 using System.Collections;
+using System.Runtime.InteropServices;
 
 namespace EditDistributor
 {
@@ -292,19 +293,35 @@ namespace EditDistributor
             string outputDirectory = Path.Combine(CommunFonctions.GoUpNDirs(CustomfbxPath, 2), "patcher", "data", "DiffFiles");
 
 
-            hdiffz = Path.Combine(Environment.CurrentDirectory, "Assets", "Hash's_Things", "EditDistributor", "hdiff", "hdiffz.exe");
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))    hdiffz = Path.Combine(Environment.CurrentDirectory, "Assets", "Hash's_Things", "EditDistributor", "hdiff", "hdiffz", "Windows", "hdiffz.exe");
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))      hdiffz = Path.Combine(Environment.CurrentDirectory, "Assets", "Hash's_Things", "EditDistributor", "hdiff", "hdiffz", "Linux", "hdiffz");
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))        hdiffz = Path.Combine(Environment.CurrentDirectory, "Assets", "Hash's_Things", "EditDistributor", "hdiff", "hdiffz", "Mac", "hdiffz");
+            
             FBXDiffFile = Path.Combine(outputDirectory, Path.GetFileNameWithoutExtension(OGfbxPath).Replace(" ", "_") + ".hdiff");
             MetaDiffFile = Path.Combine(outputDirectory, Path.GetFileNameWithoutExtension(OGfbxPath).Replace(" ", "_") + "Meta.hdiff");
 
             if (File.Exists(hdiffz))
             {
-                CommunFonctions.DeleteAllFilesInDirectory(outputDirectory);
-                // Launch the hdiff with the constructed arguments
-                string arguments = "\"" + OGfbxPath + "\" \"" + CustomfbxPath + "\" \"" + FBXDiffFile + "\"";
-                CommunFonctions.LaunchProgramWithArguments(hdiffz, arguments);
-                //we do the same for the .meta file
-                arguments = "\"" + OGfbxPath + ".meta\" \"" + CustomfbxPath + ".meta\" \"" + MetaDiffFile + "\"";
-                CommunFonctions.LaunchProgramWithArguments(hdiffz, arguments);
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                {
+                    // Launch the hdiff with the constructed arguments
+                    string arguments = "\"" + OGfbxPath + "\" \"" + CustomfbxPath + "\" \"" + FBXDiffFile + "\"";
+                    CommunFonctions.LaunchProgramWithArguments(hdiffz, arguments);
+                    //we do the same for the .meta file
+                    arguments = "\"" + OGfbxPath + ".meta\" \"" + CustomfbxPath + ".meta\" \"" + MetaDiffFile + "\"";
+                    CommunFonctions.LaunchProgramWithArguments(hdiffz, arguments);
+                }
+                else
+                {
+                    // Launch the hdiff with the constructed arguments
+                    string arguments = "/" + OGfbxPath + "/" + CustomfbxPath + "/" + FBXDiffFile + "/";
+                    CommunFonctions.LaunchProgramWithArguments(hdiffz, arguments);
+                    //we do the same for the .meta file
+                    arguments = "/" + OGfbxPath + ".meta/" + CustomfbxPath + ".meta/" + MetaDiffFile + "/";
+                    CommunFonctions.LaunchProgramWithArguments(hdiffz, arguments);
+                }
+
+
             }
             else
             {

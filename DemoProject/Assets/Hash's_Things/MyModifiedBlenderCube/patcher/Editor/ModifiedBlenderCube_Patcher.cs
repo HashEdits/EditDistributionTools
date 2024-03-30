@@ -5,6 +5,7 @@ using System;
 using System.IO;
 using System.Diagnostics;
 using System.Collections;
+using System.Runtime.InteropServices;
 
 public class ModifiedBlenderCube_Patcher : EditorWindow
 {
@@ -43,7 +44,11 @@ public class ModifiedBlenderCube_Patcher : EditorWindow
 
             string currentCustomfbxPath = Application.dataPath + "/" + CustomfbxPath;
 
-            string hpatchz = Path.Combine(GoUpNDirs(currentCustomfbxPath, 2), "patcher", "data", "hdiff", "hpatchz.exe");
+            string hpatchz = "";
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) hpatchz = Path.Combine(GoUpNDirs(currentCustomfbxPath, 2), "patcher", "data", "hdiff", "hpatchz", "Windows", "hpatchz.exe");
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux)) hpatchz = Path.Combine(GoUpNDirs(currentCustomfbxPath, 2), "patcher", "data", "hdiff", "hpatchz", "Linux", "hpatchz");
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX)) hpatchz = Path.Combine(GoUpNDirs(currentCustomfbxPath, 2), "patcher", "data", "hdiff", "hpatchz", "Mac", "hpatchz");
+
             string FBXDiffFile = Path.Combine(GoUpNDirs(currentCustomfbxPath, 2), "patcher", "data", "DiffFiles", Path.GetFileNameWithoutExtension(OGfbxPath).Replace(" ", "_") + ".hdiff");
             string MetaDiffFile = Path.Combine(GoUpNDirs(currentCustomfbxPath, 2), "patcher", "data", "DiffFiles", Path.GetFileNameWithoutExtension(OGfbxPath).Replace(" ", "_") + "Meta.hdiff");
             string fbxfolder = GoUpNDirs(currentCustomfbxPath, 1);
