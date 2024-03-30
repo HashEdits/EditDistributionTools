@@ -15,7 +15,7 @@ C:/Users/Gil/Documents/GitHub/Face-Tracking-Patcher/DemoProject
 -logFile
 Logs/AssetImportWorker1.log
 -srvPort
-52257
+52330
 Successfully changed project path to: C:/Users/Gil/Documents/GitHub/Face-Tracking-Patcher/DemoProject
 C:/Users/Gil/Documents/GitHub/Face-Tracking-Patcher/DemoProject
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
@@ -49,11 +49,11 @@ C:/Users/Gil/Documents/GitHub/Face-Tracking-Patcher/DemoProject
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [15544] Host "[IP] 192.168.1.171 [Port] 0 [Flags] 2 [Guid] 824265164 [EditorId] 824265164 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-FKSGJI1) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+Player connection [17256] Host "[IP] 192.168.1.171 [Port] 0 [Flags] 2 [Guid] 3089104635 [EditorId] 3089104635 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-FKSGJI1) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
 
-Player connection [15544] Host "[IP] 192.168.1.171 [Port] 0 [Flags] 2 [Guid] 824265164 [EditorId] 824265164 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-FKSGJI1) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [17256] Host "[IP] 192.168.1.171 [Port] 0 [Flags] 2 [Guid] 3089104635 [EditorId] 3089104635 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-FKSGJI1) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
 
-Refreshing native plugins compatible for Editor in 5.93 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 4.97 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2022.3.6f1 (b9e6e7e9fa2d)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2022.3.6f1/Editor/Data/Resources/UnitySubsystems
@@ -69,19 +69,19 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2022.3.6f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2022.3.6f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2022.3.6f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56256
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56512
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2022.3.6f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2022.3.6f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.006905 seconds.
-- Loaded All Assemblies, in  0.224 seconds
+Registered in 0.006171 seconds.
+- Loaded All Assemblies, in  0.218 seconds
 Native extension for WindowsStandalone target not found
 Native extension for Android target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.216 seconds
-Domain Reload Profiling: 439ms
-	BeginReloadAssembly (59ms)
+- Finished resetting the current domain, in  0.217 seconds
+Domain Reload Profiling: 434ms
+	BeginReloadAssembly (55ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (0ms)
 		BackupInstance (0ms)
@@ -89,19 +89,19 @@ Domain Reload Profiling: 439ms
 		CreateAndSetChildDomain (0ms)
 	RebuildCommonClasses (22ms)
 	RebuildNativeTypeToScriptingClass (7ms)
-	initialDomainReloadingComplete (42ms)
-	LoadAllAssembliesAndSetupDomain (93ms)
-		LoadAssemblies (58ms)
+	initialDomainReloadingComplete (41ms)
+	LoadAllAssembliesAndSetupDomain (91ms)
+		LoadAssemblies (54ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (89ms)
-			TypeCache.Refresh (88ms)
-				TypeCache.ScanAssembly (81ms)
+		AnalyzeDomain (88ms)
+			TypeCache.Refresh (87ms)
+				TypeCache.ScanAssembly (80ms)
 			ScanForSourceGeneratedMonoScriptInfo (0ms)
 			ResolveRequiredComponents (0ms)
-	FinalizeReload (216ms)
+	FinalizeReload (217ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (178ms)
+		SetupLoadedEditorAssemblies (179ms)
 			LogAssemblyErrors (0ms)
 			InitializePlatformSupportModulesInManaged (67ms)
 			SetLoadedEditorAssemblies (3ms)
@@ -118,8 +118,8 @@ Worker process is ready to serve import requests
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory doesn't match image C:\Users\Gil\Documents\GitHub\Face-Tracking-Patcher\DemoProject\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
 Symbol file LoadedFromMemory doesn't match image C:\Users\Gil\Documents\GitHub\Face-Tracking-Patcher\DemoProject\Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
-- Loaded All Assemblies, in  0.463 seconds
-Refreshing native plugins compatible for Editor in 1.84 ms, found 3 plugins.
+- Loaded All Assemblies, in  0.461 seconds
+Refreshing native plugins compatible for Editor in 2.32 ms, found 3 plugins.
 Native extension for WindowsStandalone target not found
 Native extension for Android target not found
 Package Manager log level set to [2]
@@ -127,47 +127,47 @@ Package Manager log level set to [2]
 [Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
 [Package Manager] Cannot connect to Unity Package Manager local server
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.375 seconds
-Domain Reload Profiling: 837ms
-	BeginReloadAssembly (88ms)
+- Finished resetting the current domain, in  0.373 seconds
+Domain Reload Profiling: 832ms
+	BeginReloadAssembly (87ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (4ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
 		CreateAndSetChildDomain (15ms)
-	RebuildCommonClasses (21ms)
+	RebuildCommonClasses (22ms)
 	RebuildNativeTypeToScriptingClass (7ms)
-	initialDomainReloadingComplete (29ms)
-	LoadAllAssembliesAndSetupDomain (316ms)
-		LoadAssemblies (170ms)
+	initialDomainReloadingComplete (30ms)
+	LoadAllAssembliesAndSetupDomain (314ms)
+		LoadAssemblies (168ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (188ms)
+		AnalyzeDomain (187ms)
 			TypeCache.Refresh (176ms)
-				TypeCache.ScanAssembly (168ms)
+				TypeCache.ScanAssembly (167ms)
 			ScanForSourceGeneratedMonoScriptInfo (9ms)
 			ResolveRequiredComponents (2ms)
-	FinalizeReload (375ms)
+	FinalizeReload (373ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (267ms)
+		SetupLoadedEditorAssemblies (265ms)
 			LogAssemblyErrors (0ms)
 			InitializePlatformSupportModulesInManaged (17ms)
-			SetLoadedEditorAssemblies (2ms)
+			SetLoadedEditorAssemblies (3ms)
 			RefreshPlugins (0ms)
-			BeforeProcessingInitializeOnLoad (44ms)
-			ProcessInitializeOnLoadAttributes (187ms)
+			BeforeProcessingInitializeOnLoad (42ms)
+			ProcessInitializeOnLoadAttributes (185ms)
 			ProcessInitializeOnLoadMethodAttributes (13ms)
 			AfterProcessingInitializeOnLoad (5ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
 		AwakeInstancesAfterBackupRestoration (4ms)
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.03 seconds
-Refreshing native plugins compatible for Editor in 2.02 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 1.87 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 3078 Unused Serialized files (Serialized files now loaded: 0)
 Unloading 31 unused Assets / (56.3 KB). Loaded Objects now: 3543.
-Memory consumption went from 122.6 MB to 122.6 MB.
-Total: 2.865900 ms (FindLiveObjects: 0.226500 ms CreateObjectMapping: 0.094000 ms MarkObjects: 2.465600 ms  DeleteObjects: 0.078800 ms)
+Memory consumption went from 122.7 MB to 122.6 MB.
+Total: 2.472300 ms (FindLiveObjects: 0.181600 ms CreateObjectMapping: 0.071600 ms MarkObjects: 2.139500 ms  DeleteObjects: 0.079100 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
@@ -182,36 +182,20 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 48015.859113 seconds.
-  path: Assets/Hash's_Things/EditDistributor/hdiff/hpatchz/Linux/hpatchz
-  artifactKey: Guid(51d3c384fea931b4e8c6ff5cdccc760d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Hash's_Things/EditDistributor/hdiff/hpatchz/Linux/hpatchz using Guid(51d3c384fea931b4e8c6ff5cdccc760d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3cbba5ddd60a078b3b028ba38189a30e') in 0.006652 seconds
+  Time since last request: 48480.169056 seconds.
+  path: Assets/Hash's_Things/MyModifiedBlenderCube/patcher/data/DiffFiles/BlenderCubeMeta.hdiff
+  artifactKey: Guid(796e3d8fd673ace40966761935fc4ea4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Hash's_Things/MyModifiedBlenderCube/patcher/data/DiffFiles/BlenderCubeMeta.hdiff using Guid(796e3d8fd673ace40966761935fc4ea4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3f7218d22d27975571825dfe664b92bc') in 0.006711 seconds
 Number of updated asset objects reloaded before import = 0
 Number of asset objects unloaded after import = 1
 ========================================================================
-Received Import Request.
-  Time since last request: 0.001517 seconds.
-  path: Assets/Hash's_Things/EditDistributor/hdiff/hpatchz/Mac
-  artifactKey: Guid(70f53fd6026a63849a3cd0d9f278f493) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Hash's_Things/EditDistributor/hdiff/hpatchz/Mac using Guid(70f53fd6026a63849a3cd0d9f278f493) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '823c77124c4f7c96583d1f669396dd5e') in 0.000288 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 0
-========================================================================
-Received Import Request.
-  Time since last request: 0.002402 seconds.
-  path: Assets/Hash's_Things/EditDistributor/Editor/CommunFonctions.cs
-  artifactKey: Guid(24616e4f1464f18418bfaa3b4fa6a6cb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Hash's_Things/EditDistributor/Editor/CommunFonctions.cs using Guid(24616e4f1464f18418bfaa3b4fa6a6cb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b604cf991ee97cf0590af6c2d73a78b7') in 0.000342 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 0
-========================================================================
 Received Prepare
-Refreshing native plugins compatible for Editor in 1.91 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 1.88 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 1 unused Assets / (0.8 KB). Loaded Objects now: 3544.
+Unloading 1 unused Assets / (0.9 KB). Loaded Objects now: 3544.
 Memory consumption went from 72.9 MB to 72.9 MB.
-Total: 2.621000 ms (FindLiveObjects: 0.178300 ms CreateObjectMapping: 0.099300 ms MarkObjects: 2.331700 ms  DeleteObjects: 0.011200 ms)
+Total: 2.557200 ms (FindLiveObjects: 0.176600 ms CreateObjectMapping: 0.096300 ms MarkObjects: 2.273800 ms  DeleteObjects: 0.010200 ms)
 
 Prepare: number of updated asset objects reloaded= 0
 AssetImportParameters requested are different than current active one (requested -> active):
