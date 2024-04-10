@@ -132,12 +132,19 @@ namespace EditDistributor {
                             else
                             {
                                 outputDirectory = Path.Combine(CommunFonctions.GoUpNDirs(CustomfbxPath, 2), "patcher", "data", "DiffFiles");
-                                PatcherScriptDestDir = Path.Combine(CommunFonctions.GoUpNDirs(outputDirectory, 2), "Editor", Path.GetFileNameWithoutExtension(CustomfbxPath).Replace(" ", "_") + "_Patcher.cs");
                                 if (NameOverwriteTickBox)
                                 {
-                                    if (!string.IsNullOrEmpty(DistributionNameOverwriteText)) patcherFolder = Path.Combine(CommunFonctions.GoUpNDirs(CustomfbxPath, 3), DistributionNameOverwriteText, "patcher");
+                                    if (!string.IsNullOrEmpty(DistributionNameOverwriteText))
+                                    {
+                                        patcherFolder = Path.Combine(CommunFonctions.GoUpNDirs(CustomfbxPath, 3), DistributionNameOverwriteText, "patcher");
+                                        PatcherScriptDestDir = Path.Combine(CommunFonctions.GoUpNDirs(outputDirectory, 2), "Editor", DistributionNameOverwriteText.Replace(" ", "_") + "_Patcher.cs");
+                                    }
                                 }
-                                else patcherFolder = Path.Combine(CommunFonctions.GoUpNDirs(CustomfbxPath, 2), "patcher");
+                                else
+                                {
+                                    patcherFolder = Path.Combine(CommunFonctions.GoUpNDirs(CustomfbxPath, 2), "patcher");
+                                    PatcherScriptDestDir = Path.Combine(CommunFonctions.GoUpNDirs(outputDirectory, 2), "Editor", Path.GetFileNameWithoutExtension(CustomfbxPath).Replace(" ", "_") + "_Patcher.cs");
+                                }
                             }
                         }
                         else
@@ -167,7 +174,7 @@ namespace EditDistributor {
                     UserEditorWindowName = EditorGUILayout.TextField(new GUIContent("Your Name: ", "Will be used to organize your patchers in the menu bar"), UserEditorWindowName);
                     if (NameOverwriteTickBox)
                     {
-                        if (! string.IsNullOrEmpty(DistributionNameOverwriteText)) EditorWindowPath = "Tools/" + UserEditorWindowName + "/" + DistributionNameOverwriteText + "_Patcher";
+                        if (! string.IsNullOrEmpty(DistributionNameOverwriteText)) EditorWindowPath = "Tools/" + UserEditorWindowName + "/" + DistributionNameOverwriteText.Replace(" ", "_") + "_Patcher";
                     }
                     else EditorWindowPath = "Tools/" + UserEditorWindowName + "/" + Path.GetFileNameWithoutExtension(OGfbxPath) + "Patcher";
                     if (string.IsNullOrEmpty(UserEditorWindowName))
@@ -446,7 +453,7 @@ namespace EditDistributor {
             string[] originalStrings = new string[] { "\"YourCoolAvatar\"", "\"YourCoolCustomAvatar\"", "NameOfWindow", "PatcherTemplate", "Tools/Hash/EditDistributor/(DO_NOT_USE)", "DistributionCreator", "CurrentPackageVersion", "AvatarName" };
             if (NameOverwriteTickBox)
             {
-                if (!string.IsNullOrEmpty(DistributionNameOverwriteText)) remplacementStrings = new string[] { CommunFonctions.MakePathPlatformAgnostic(CommunFonctions.GetRelativePathToAssets(OGfbxPath)), CommunFonctions.MakePathPlatformAgnostic(CommunFonctions.GetRelativePathToAssets(CustomfbxPath)), DistributionNameOverwriteText + "_Patcher", DistributionNameOverwriteText + "_Patcher", EditorWindowPath, UserEditorWindowName, PackageName, DistributionNameOverwriteText };
+                if (!string.IsNullOrEmpty(DistributionNameOverwriteText)) remplacementStrings = new string[] { CommunFonctions.MakePathPlatformAgnostic(CommunFonctions.GetRelativePathToAssets(OGfbxPath)), CommunFonctions.MakePathPlatformAgnostic(CommunFonctions.GetRelativePathToAssets(CustomfbxPath)), DistributionNameOverwriteText + "_Patcher", DistributionNameOverwriteText.Replace(" ", "_") + "_Patcher", EditorWindowPath, UserEditorWindowName, PackageName, DistributionNameOverwriteText };
             }
             else remplacementStrings = new string[] { CommunFonctions.MakePathPlatformAgnostic(CommunFonctions.GetRelativePathToAssets(OGfbxPath)), CommunFonctions.MakePathPlatformAgnostic(CommunFonctions.GetRelativePathToAssets(CustomfbxPath)), Path.GetFileNameWithoutExtension(CustomfbxPath).Replace(" ", "_") + "_Patcher", Path.GetFileNameWithoutExtension(CustomfbxPath).Replace(" ", "_") + "_Patcher", EditorWindowPath, UserEditorWindowName, PackageName, Path.GetFileNameWithoutExtension(OGfbxPath) };
             UnityEngine.Debug.Log(EditorWindowPath);
