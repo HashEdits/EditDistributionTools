@@ -60,7 +60,7 @@ public class PatcherTemplate : EditorWindow
             EditorGUILayout.Space(20);
             if (!File.Exists(currentOGfbxPath))
             {
-                AddBoldCenteredLabel("Please make sure your have the original FBX in: " + GoUpNDirs(CustomfbxPath, 1));
+                AddBoldCenteredLabel("Please make sure your have the original FBX in: " + GoUpNDirs(OGfbxPath, 1));
                 debugMessage = 1;
             }
             else if (File.Exists(currentCustomfbxPath))
