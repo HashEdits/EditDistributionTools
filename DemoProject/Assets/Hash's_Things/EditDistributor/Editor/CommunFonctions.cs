@@ -74,7 +74,7 @@ namespace EditDistributor
 
         public static void PrintMissingFileError(string PathToFile)
         {
-            UnityEngine.Debug.Log("please make sure you have " + Path.GetFileName(PathToFile) + " in: " + PathToFile);
+            UnityEngine.Debug.Log("Please make sure you have " + Path.GetFileName(PathToFile) + " in: " + PathToFile);
         }
 
 

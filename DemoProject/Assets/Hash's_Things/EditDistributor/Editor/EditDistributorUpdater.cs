@@ -116,7 +116,7 @@ namespace EditDistributor
                             }
                             else
                             {
-                                patcherToUpdate = Path.Combine(CommunFonctions.GoUpNDirs(CustomfbxPath, 2), "patcher", "Editor", Path.GetFileNameWithoutExtension(CustomfbxPath) + "_Patcher.cs");
+                                patcherToUpdate = Path.Combine(CommunFonctions.GoUpNDirs(CustomfbxPath, 2), "Patcher", "Editor", Path.GetFileNameWithoutExtension(CustomfbxPath) + "_Patcher.cs");
                             }
                         }
                         else
@@ -168,8 +168,8 @@ namespace EditDistributor
                     {
                         DestinationDir = EditorUtility.OpenFolderPanel("Select Folder", "", "");
                     }
-                    EditorGUILayout.LabelField("custom desc source: ", DescriptionDir);
-                    EditorGUILayout.LabelField("custom desc dest: ", DestinationDir);
+                    EditorGUILayout.LabelField("Custom desc source: ", DescriptionDir);
+                    EditorGUILayout.LabelField("Custom desc dest: ", DestinationDir);
 
                     CreatorName = EditorGUILayout.TextField("CreatorName ", CreatorName);
 
@@ -181,7 +181,7 @@ namespace EditDistributor
 
                 }
             }
-            UnityEngine.Debug.Log("patcher to update: " + patcherToUpdate);
+            UnityEngine.Debug.Log("Patcher to update: " + patcherToUpdate);
             UnityEngine.Debug.Log("Does the patcher to update exists" + File.Exists(patcherToUpdate));
 
 
@@ -284,13 +284,13 @@ namespace EditDistributor
             }
             if (debugMessage == 4)
             {
-                CommunFonctions.AddBoldCenteredLabel("patcher updated!");
+                CommunFonctions.AddBoldCenteredLabel("Patcher updated!");
             }
         }
 
         private void Updating()
         {
-            string outputDirectory = Path.Combine(CommunFonctions.GoUpNDirs(CustomfbxPath, 2), "patcher", "data", "DiffFiles");
+            string outputDirectory = Path.Combine(CommunFonctions.GoUpNDirs(CustomfbxPath, 2), "Patcher", "Data", "DiffFiles");
 
 
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))    hdiffz = Path.Combine(Environment.CurrentDirectory, "Assets", "Hash's_Things", "EditDistributor", "hdiff", "hdiffz", "Windows", "hdiffz.exe");
