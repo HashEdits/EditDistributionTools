@@ -20,8 +20,6 @@ public class PatcherTemplate : EditorWindow
     public static void ShowWindow()
     {
         PatcherTemplate window = GetWindow<PatcherTemplate>(@"NameOfWindow");
-        if (!Debug) window.maxSize = new Vector2(442, 223);
-        if (Debug) window.maxSize = new Vector2(1000, 700);
         window.Show();
     }
 
@@ -65,7 +63,7 @@ public class PatcherTemplate : EditorWindow
             }
             else if (File.Exists(currentCustomfbxPath))
             {
-                AddBoldCenteredLabel("Edited moddel is already in the folder Enjoy :)");
+                AddBoldCenteredLabel("Edited model is already in the folder");
                 debugMessage = 2;
             }
             else if (!(File.Exists(FBXDiffFile) && File.Exists(MetaDiffFile)))
@@ -150,27 +148,23 @@ public class PatcherTemplate : EditorWindow
                 switch (debugMessage)
                 {
                     case 0:
-                        //please click the button
-                        AddBoldCenteredLabel("Please click the button above to patch your moddel :)");
-                        EditorGUILayout.Space(10);
-                        AddBoldCenteredLabel("Please double check that you used " + AvatarVersion);
-                        AddBoldCenteredLabel("to import the original avatar in your project");
                         break;
                     case 4:
-                        //fbx fucked up
-                        AddBoldCenteredLabel("/!\\ Something went wrong during the patching of the FBX /!\\ ");
+                        //fbx fail
+                        AddBoldCenteredLabel("Failed patching the FBX!");
                         EditorGUILayout.Space(10);
                         AddBoldCenteredLabel("Please double check that you used " + AvatarVersion);
                         AddBoldCenteredLabel("to import the original avatar in your project");
                         break;
                     case 5:
-                        //meta fucked up
-                        AddBoldCenteredLabel("/!\\ Something went wrong during the patching of the import file /!\\ ");
+                        //meta fail
+                        AddBoldCenteredLabel("FBX configuration has been modified!");
                         EditorGUILayout.Space(10);
-                        AddBoldCenteredLabel("Please double check that you used " + AvatarVersion + "to import the original avatar in your project");
+                        AddBoldCenteredLabel("Please double check that you used " + AvatarVersion);
+                        AddBoldCenteredLabel("to import the original avatar in your project");
                         break;
                     case 6:
-                        AddBoldCenteredLabel("FBX patched, get to the prefab folder to enjoy your product");
+                        AddBoldCenteredLabel("FBX patched!");
                         break;
                     default:
                         break;
@@ -183,7 +177,7 @@ public class PatcherTemplate : EditorWindow
             {
                 EditorGUILayout.BeginHorizontal();
                 GUILayout.FlexibleSpace();
-                if (GUILayout.Button("this package is using Hash's edit Distributor", EditorStyles.linkLabel))
+                if (GUILayout.Button("This package is using Hash's Edit Distributor", EditorStyles.linkLabel))
                 {
                     Application.OpenURL("https://github.com/HashEdits/Face-Tracking-Patcher");
                 }
@@ -260,7 +254,7 @@ public class PatcherTemplate : EditorWindow
                 // Write the input string to the file
                 File.WriteAllText(filePath, inputString);
 
-                if (Debug) UnityEngine.Debug.Log("something went wrong, please get in contact and provide: " + filePath + "/" + fileName);
+                if (Debug) UnityEngine.Debug.Log("Something went wrong, please get in contact and provide: " + filePath + "/" + fileName);
                 return true;
             }
             catch (Exception e)
