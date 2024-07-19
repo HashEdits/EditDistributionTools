@@ -1,0 +1,64 @@
+###
+# Unity folders and files
+###
+DemoProject/Assets/AssetStoreTools*
+DemoProject/Build/
+DemoProject/Library/*
+DemoProject/Local[Cc]ache
+DemoProject/Obj/
+DemoProject/Temp/
+DemoProject/Logs/
+DemoProject/UnityGenerated/
+DemoProject/UserSettings/
+DemoProject/Exports/
+
+# My project excludes
+
+
+DemoProject/[Uu]nityPackages/
+DemoProject/[Tt]hry/
+DemoProject/[Rr]esources/
+DemoProject/[Pp]rojectSettings/
+
+
+# file on crash reports
+DemoProject/sysinfo.txt
+
+# Unity3D generated meta files
+*.pidb.meta
+
+# Visual Studio cache directory
+.vs/
+
+###
+# VS/MD solution and project files
+###
+DemoProject/[Ee]xportedObj/
+*.booproj
+*.csproj
+*.sln
+*.suo
+*.svd
+*.unityproj
+*.user
+*.userprefs
+*.pidb
+.DS_Store
+
+###
+# OS generated
+###
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Builds
+*.apk
+*.unitypackage
+
+.rsp2
+/DemoProject/Library/PackageCache
