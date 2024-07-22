@@ -136,7 +136,7 @@ namespace EditDistributor {
                                 {
                                     if (!string.IsNullOrEmpty(DistributionNameOverwriteText))
                                     {
-                                        patcherFolder = Path.Combine(CommunFonctions.GoUpNDirs(CustomfbxPath, 3), DistributionNameOverwriteText, "patcher");
+                                        patcherFolder = Path.Combine(CommunFonctions.GoUpNDirs(CustomfbxPath, 3), DistributionNameOverwriteText, "Patcher");
                                         PatcherScriptDestDir = Path.Combine(CommunFonctions.GoUpNDirs(outputDirectory, 2), "Editor", DistributionNameOverwriteText.Replace(" ", "_") + "_Patcher.cs");
                                     }
                                 }
@@ -174,9 +174,9 @@ namespace EditDistributor {
                     UserEditorWindowName = EditorGUILayout.TextField(new GUIContent("Your Name: ", "Will be used to organize your patchers in the menu bar"), UserEditorWindowName);
                     if (NameOverwriteTickBox)
                     {
-                        if (! string.IsNullOrEmpty(DistributionNameOverwriteText)) EditorWindowPath = "Tools/" + UserEditorWindowName + "/" + DistributionNameOverwriteText + " Patch";
+                        if (! string.IsNullOrEmpty(DistributionNameOverwriteText)) EditorWindowPath = "Tools/" + UserEditorWindowName + "/" + DistributionNameOverwriteText + " Patcher";
                     }
-                    else EditorWindowPath = "Tools/" + UserEditorWindowName + "/" + Path.GetFileNameWithoutExtension(OGfbxPath) + " Patch";
+                    else EditorWindowPath = "Tools/" + UserEditorWindowName + "/" + Path.GetFileNameWithoutExtension(OGfbxPath) + " Patcher";
                     if (string.IsNullOrEmpty(UserEditorWindowName))
                     {
 
@@ -464,7 +464,7 @@ namespace EditDistributor {
             UnityEngine.Debug.Log(EditorWindowPath);
             CommunFonctions.ReplaceStringsInFile(PatcherScriptDestDir, originalStrings, remplacementStrings);
 
-            UnityEngine.Debug.Log("Patcher created");
+            UnityEngine.Debug.Log("Patcher created yippie :D");
             AssetDatabase.Refresh();
         }
 
