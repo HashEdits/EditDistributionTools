@@ -150,6 +150,11 @@ public class PatcherTemplate : EditorWindow
                 switch (debugMessage)
                 {
                     case 0:
+                        //please click the button
+                        AddBoldCenteredLabel("Please click the button above to patch your moddel :)");
+                        EditorGUILayout.Space(10);
+                        AddBoldCenteredLabel("Please double check that you used " + AvatarVersion);
+                        AddBoldCenteredLabel("to import the original avatar in your project");
                         break;
                     case 4:
                         //fbx fucked up
@@ -162,11 +167,11 @@ public class PatcherTemplate : EditorWindow
                         //meta fucked up
                         AddBoldCenteredLabel("/!\\ Something went wrong during the patching of the import file /!\\ ");
                         EditorGUILayout.Space(10);
-                        AddBoldCenteredLabel("Please double check that you used " + AvatarVersion);
+                        AddBoldCenteredLabel("Please double check that you used " + AvatarVersion + "to import the original avatar in your project");
                         AddBoldCenteredLabel("to import the original avatar in your project");
                         break;
                     case 6:
-                        AddBoldCenteredLabel("FBX patched!");
+                        AddBoldCenteredLabel("FBX patched, get to the prefab folder to enjoy your product");
                         break;
                     default:
                         break;
