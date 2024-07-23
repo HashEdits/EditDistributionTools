@@ -20,6 +20,8 @@ public class PatcherTemplate : EditorWindow
     public static void ShowWindow()
     {
         PatcherTemplate window = GetWindow<PatcherTemplate>(@"NameOfWindow");
+        if (!Debug) window.maxSize = new Vector2(442, 223);
+        if (Debug) window.maxSize = new Vector2(1000, 700);
         window.Show();
     }
 
@@ -63,7 +65,7 @@ public class PatcherTemplate : EditorWindow
             }
             else if (File.Exists(currentCustomfbxPath))
             {
-                AddBoldCenteredLabel("Edited model is already in the folder");
+                AddBoldCenteredLabel("Edited model is already in the folder Enjoy :)");
                 debugMessage = 2;
             }
             else if (!(File.Exists(FBXDiffFile) && File.Exists(MetaDiffFile)))
@@ -150,15 +152,15 @@ public class PatcherTemplate : EditorWindow
                     case 0:
                         break;
                     case 4:
-                        //fbx fail
-                        AddBoldCenteredLabel("Failed patching the FBX!");
+                        //fbx fucked up
+                        AddBoldCenteredLabel("/!\\ Something went wrong during the patching of the FBX /!\\ ");
                         EditorGUILayout.Space(10);
                         AddBoldCenteredLabel("Please double check that you used " + AvatarVersion);
                         AddBoldCenteredLabel("to import the original avatar in your project");
                         break;
                     case 5:
-                        //meta fail
-                        AddBoldCenteredLabel("FBX configuration has been modified!");
+                        //meta fucked up
+                        AddBoldCenteredLabel("/!\\ Something went wrong during the patching of the import file /!\\ ");
                         EditorGUILayout.Space(10);
                         AddBoldCenteredLabel("Please double check that you used " + AvatarVersion);
                         AddBoldCenteredLabel("to import the original avatar in your project");
