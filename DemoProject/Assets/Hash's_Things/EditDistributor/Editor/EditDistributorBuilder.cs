@@ -131,18 +131,18 @@ namespace EditDistributor {
                             }
                             else
                             {
-                                outputDirectory = Path.Combine(CommunFonctions.GoUpNDirs(CustomfbxPath, 2), "patcher", "data", "DiffFiles");
+                                outputDirectory = Path.Combine(CommunFonctions.GoUpNDirs(CustomfbxPath, 2), "Patcher", "Data", "DiffFiles");
                                 if (NameOverwriteTickBox)
                                 {
                                     if (!string.IsNullOrEmpty(DistributionNameOverwriteText))
                                     {
-                                        patcherFolder = Path.Combine(CommunFonctions.GoUpNDirs(CustomfbxPath, 3), DistributionNameOverwriteText, "patcher");
+                                        patcherFolder = Path.Combine(CommunFonctions.GoUpNDirs(CustomfbxPath, 3), DistributionNameOverwriteText, "Patcher");
                                         PatcherScriptDestDir = Path.Combine(CommunFonctions.GoUpNDirs(outputDirectory, 2), "Editor", DistributionNameOverwriteText.Replace(" ", "_") + "_Patcher.cs");
                                     }
                                 }
                                 else
                                 {
-                                    patcherFolder = Path.Combine(CommunFonctions.GoUpNDirs(CustomfbxPath, 2), "patcher");
+                                    patcherFolder = Path.Combine(CommunFonctions.GoUpNDirs(CustomfbxPath, 2), "Patcher");
                                     PatcherScriptDestDir = Path.Combine(CommunFonctions.GoUpNDirs(outputDirectory, 2), "Editor", Path.GetFileNameWithoutExtension(CustomfbxPath).Replace(" ", "_") + "_Patcher.cs");
                                 }
                             }
@@ -174,9 +174,9 @@ namespace EditDistributor {
                     UserEditorWindowName = EditorGUILayout.TextField(new GUIContent("Your Name: ", "Will be used to organize your patchers in the menu bar"), UserEditorWindowName);
                     if (NameOverwriteTickBox)
                     {
-                        if (! string.IsNullOrEmpty(DistributionNameOverwriteText)) EditorWindowPath = "Tools/" + UserEditorWindowName + "/" + DistributionNameOverwriteText.Replace(" ", "_") + "_Patcher";
+                        if (! string.IsNullOrEmpty(DistributionNameOverwriteText)) EditorWindowPath = "Tools/" + UserEditorWindowName + "/" + DistributionNameOverwriteText + " Patcher";
                     }
-                    else EditorWindowPath = "Tools/" + UserEditorWindowName + "/" + Path.GetFileNameWithoutExtension(OGfbxPath) + "Patcher";
+                    else EditorWindowPath = "Tools/" + UserEditorWindowName + "/" + Path.GetFileNameWithoutExtension(OGfbxPath) + " Patcher";
                     if (string.IsNullOrEmpty(UserEditorWindowName))
                     {
 
@@ -395,8 +395,10 @@ namespace EditDistributor {
 
         private void BuildPatcher()
         {
-        
-            Directory.CreateDirectory(outputDirectory);
+            //Check if output directory already exists
+            if (!Directory.Exists(outputDirectory)){
+                Directory.CreateDirectory(outputDirectory);
+            }
 
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)){
                 hdiffz = Path.Combine(Environment.CurrentDirectory, "Assets", "Hash's_Things", "EditDistributor", "hdiff", "hdiffz", "Windows", "hdiffz.exe");
@@ -444,9 +446,12 @@ namespace EditDistributor {
             }
             else PatcherScriptDestDir = Path.Combine(CommunFonctions.GoUpNDirs(outputDirectory, 2), "Editor", Path.GetFileNameWithoutExtension(CustomfbxPath).Replace(" ", "_") + "_Patcher.cs");
 
+            //Check if patcher script destination director already exists
+            if (!Directory.Exists(CommunFonctions.GoUpNDirs(PatcherScriptDestDir, 1))){
+                Directory.CreateDirectory(CommunFonctions.GoUpNDirs(PatcherScriptDestDir, 1));
+                CommunFonctions.CopyFolder(hdiffzFolder, hpatchzDestDir);
+            }
 
-            Directory.CreateDirectory(CommunFonctions.GoUpNDirs(PatcherScriptDestDir, 1));
-            CommunFonctions.CopyFolder(hdiffzFolder, hpatchzDestDir);
             CommunFonctions.CheckAndCopyFileIfExists(PatcherTemplateScript, PatcherScriptDestDir);
 
 
@@ -459,7 +464,7 @@ namespace EditDistributor {
             UnityEngine.Debug.Log(EditorWindowPath);
             CommunFonctions.ReplaceStringsInFile(PatcherScriptDestDir, originalStrings, remplacementStrings);
 
-            UnityEngine.Debug.Log("patcher created yippie :D");
+            UnityEngine.Debug.Log("Patcher created yippie :D");
             AssetDatabase.Refresh();
         }
 
@@ -469,7 +474,7 @@ namespace EditDistributor {
 
         private void AddDebugInfo()
         {
-            string outputDirectory = Path.Combine(CommunFonctions.GoUpNDirs(CustomfbxPath, 2), "patcher", "data", "DiffFiles");
+            string outputDirectory = Path.Combine(CommunFonctions.GoUpNDirs(CustomfbxPath, 2), "Patcher", "Data", "DiffFiles");
             //some debug things that helped tracing back issues
             GUILayout.Label("outputDirectory: " + outputDirectory);
             GUILayout.Label("hdiff: " + Path.Combine(Environment.CurrentDirectory, "Assets", "Hash's_Things", "EditDistributor", "pythonscripts", "hdiff", "hdiffz.exe"));

@@ -65,7 +65,7 @@ public class PatcherTemplate : EditorWindow
             }
             else if (File.Exists(currentCustomfbxPath))
             {
-                AddBoldCenteredLabel("Edited moddel is already in the folder Enjoy :)");
+                AddBoldCenteredLabel("Edited model is already in the folder Enjoy :)");
                 debugMessage = 2;
             }
             else if (!(File.Exists(FBXDiffFile) && File.Exists(MetaDiffFile)))
@@ -151,7 +151,7 @@ public class PatcherTemplate : EditorWindow
                 {
                     case 0:
                         //please click the button
-                        AddBoldCenteredLabel("Please click the button above to patch your moddel :)");
+                        AddBoldCenteredLabel("Please click the button above to patch your model :)");
                         EditorGUILayout.Space(10);
                         AddBoldCenteredLabel("Please double check that you used " + AvatarVersion);
                         AddBoldCenteredLabel("to import the original avatar in your project");
@@ -183,7 +183,7 @@ public class PatcherTemplate : EditorWindow
             {
                 EditorGUILayout.BeginHorizontal();
                 GUILayout.FlexibleSpace();
-                if (GUILayout.Button("this package is using Hash's edit Distributor", EditorStyles.linkLabel))
+                if (GUILayout.Button("This package is using Hash's Edit Distributor", EditorStyles.linkLabel))
                 {
                     Application.OpenURL("https://github.com/HashEdits/Face-Tracking-Patcher");
                 }
@@ -260,7 +260,7 @@ public class PatcherTemplate : EditorWindow
                 // Write the input string to the file
                 File.WriteAllText(filePath, inputString);
 
-                if (Debug) UnityEngine.Debug.Log("something went wrong, please get in contact and provide: " + filePath + "/" + fileName);
+                if (Debug) UnityEngine.Debug.Log("Something went wrong, please get in contact and provide: " + filePath + "/" + fileName);
                 return true;
             }
             catch (Exception e)
