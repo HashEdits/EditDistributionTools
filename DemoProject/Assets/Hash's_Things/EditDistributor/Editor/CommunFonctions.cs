@@ -285,6 +285,18 @@ namespace EditDistributor
             return string.Empty;
         }
 
+        public static string GetGameObjectPath(GameObject gameObject)
+        {
+            if (string.IsNullOrEmpty(AssetDatabase.GetAssetPath(gameObject)))
+            {
+                return FindFbxPathInAnimator(gameObject);
+            }
+            else
+            {
+                return (Application.dataPath.Replace("Assets", "") + AssetDatabase.GetAssetPath(gameObject))/*.Replace("\\", "/")*/;//returns 
+            }
+        }
+
 
         private static string GetFBXPathFromAvatar(Avatar avatar)
         {
@@ -335,7 +347,7 @@ namespace EditDistributor
         {
             try
             {
-                var process = new Process
+                Process process = new Process
                 {
                     StartInfo = new ProcessStartInfo()
                     {
@@ -353,6 +365,7 @@ namespace EditDistributor
 
 
                 process.Start();
+                UnityEngine.Debug.Log("we started process with argument\n + " + arguments);
                 UnityEngine.Debug.Log(process.StandardOutput.ReadToEnd());
                 process.WaitForExit();
 

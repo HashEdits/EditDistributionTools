@@ -81,7 +81,7 @@ namespace EditDistributor
 
                         if (OGAvatarPrefab != null)
                         {
-                            OGfbxPath = CommunFonctions.FindFbxPathInAnimator(OGAvatarPrefab);
+                            OGfbxPath = CommunFonctions.GetGameObjectPath(OGAvatarPrefab);
 
                             if (Debug) GUILayout.Label(OGfbxPath);
                             if (string.IsNullOrEmpty(OGfbxPath))
@@ -107,7 +107,7 @@ namespace EditDistributor
 
                         if (CustomAvatarPrefab != null)
                         {
-                            CustomfbxPath = CommunFonctions.FindFbxPathInAnimator(CustomAvatarPrefab);
+                            CustomfbxPath = CommunFonctions.GetGameObjectPath(CustomAvatarPrefab);
 
                             if (Debug) GUILayout.Label(CustomfbxPath);
                             if (string.IsNullOrEmpty(CustomfbxPath))

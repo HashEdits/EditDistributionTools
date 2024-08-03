@@ -11,15 +11,17 @@ public class ModifiedBlenderCube_Patcher : EditorWindow
 {
     private static bool Debug = false;
     private static string OGfbxPath = @"DemoCreator" + Path.DirectorySeparatorChar + @"BlenderCube" + Path.DirectorySeparatorChar + @"fbx" + Path.DirectorySeparatorChar + @"BlenderCube.fbx";
-    private static string CustomfbxPath = @"MyModifiedBlenderCube" + Path.DirectorySeparatorChar + @"FBX" + Path.DirectorySeparatorChar + @"ModifiedBlenderCube.fbx";
+    private static string CustomfbxPath = @"DemoAddOnCreator" + Path.DirectorySeparatorChar + @"MyModifiedBlenderCube" + Path.DirectorySeparatorChar + @"FBX" + Path.DirectorySeparatorChar + @"ModifiedBlenderCube.fbx";
     private byte debugMessage = 0;
-    private static string AvatarVersion = @"Very Long Name Creator of Cube v1.1";
+    private static string AvatarVersion = @"SampleCube v1.0.unitypackage";
     private bool PatchButtonHasBeenPressed = false;
 
-    [MenuItem(@"Tools/Jerry's Face Tracking/BlenderCube Patch")]
+    [MenuItem(@"Tools/DemoAddOnCreator/BlenderCube Patcher")]
     public static void ShowWindow()
     {
         ModifiedBlenderCube_Patcher window = GetWindow<ModifiedBlenderCube_Patcher>(@"ModifiedBlenderCube_Patcher");
+        if (!Debug) window.maxSize = new Vector2(442, 223);
+        if (Debug) window.maxSize = new Vector2(1000, 700);
         window.Show();
     }
 
@@ -34,7 +36,7 @@ public class ModifiedBlenderCube_Patcher : EditorWindow
 
             EditorGUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
-            GUILayout.Label(@"Jerry's Face Tracking" + "'s "+ @"BlenderCube", boldLabelStyle);
+            GUILayout.Label(@"DemoAddOnCreator" + "'s "+ @"BlenderCube", boldLabelStyle);
             GUILayout.FlexibleSpace();
             EditorGUILayout.EndHorizontal();
 
@@ -63,7 +65,7 @@ public class ModifiedBlenderCube_Patcher : EditorWindow
             }
             else if (File.Exists(currentCustomfbxPath))
             {
-                AddBoldCenteredLabel("Edited model is already in the folder");
+                AddBoldCenteredLabel("Edited model is already in the folder Enjoy :)");
                 debugMessage = 2;
             }
             else if (!(File.Exists(FBXDiffFile) && File.Exists(MetaDiffFile)))
@@ -148,23 +150,27 @@ public class ModifiedBlenderCube_Patcher : EditorWindow
                 switch (debugMessage)
                 {
                     case 0:
+                        //please click the button
+                        AddBoldCenteredLabel("Please click the button above to patch your model :)");
+                        EditorGUILayout.Space(10);
+                        AddBoldCenteredLabel("Please double check that you used " + AvatarVersion);
+                        AddBoldCenteredLabel("to import the original avatar in your project");
                         break;
                     case 4:
-                        //fbx fail
-                        AddBoldCenteredLabel("Failed to patching the FBX!");
+                        //fbx fucked up
+                        AddBoldCenteredLabel("/!\\ Something went wrong during the patching of the FBX /!\\ ");
                         EditorGUILayout.Space(10);
                         AddBoldCenteredLabel("Please double check that you used " + AvatarVersion);
                         AddBoldCenteredLabel("to import the original avatar in your project");
                         break;
                     case 5:
-                        //meta fail
-                        AddBoldCenteredLabel("FBX configuration has been modified!");
+                        //meta fucked up
+                        AddBoldCenteredLabel("/!\\ Something went wrong during the patching of the import file /!\\ ");
                         EditorGUILayout.Space(10);
-                        AddBoldCenteredLabel("Please double check that you used " + AvatarVersion);
-                        AddBoldCenteredLabel("to import the original avatar in your project");
+                        AddBoldCenteredLabel("Please double check that you used " + AvatarVersion + "to import the original avatar in your project");
                         break;
                     case 6:
-                        AddBoldCenteredLabel("FBX patched!");
+                        AddBoldCenteredLabel("FBX patched, get to the prefab folder to enjoy your product");
                         break;
                     default:
                         break;
