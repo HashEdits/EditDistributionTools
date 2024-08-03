@@ -58,7 +58,6 @@ Thumbs.db
 
 # Builds
 *.apk
-*.unitypackage
 
 .rsp2
 /DemoProject/Library/PackageCache
