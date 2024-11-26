@@ -4,7 +4,7 @@
 
 # EditDistributor 🗳️
 
-This is a tool to automate and the ease the distribution of modifications of Unity 3D moddels
+This is a tool to automate and the ease the distribution of modifications of Unity 3D models
 
 
 
@@ -13,14 +13,14 @@ This is a tool to automate and the ease the distribution of modifications of Uni
 </p>
 
 
-This set of tools enable you to distribute your modifications to any 3D moddels with ease.
+This set of tools enable you to distribute your modifications to any 3D models with ease.
 
-It's main usecase is to generate a difference between your moddifications on a 3D moddel and an original 3D moddel created by a third party, which you don't have the rights to distribute the original data
+It's main usecase is to generate a difference between your moddifications on a 3D model and an original 3D model created by a third party, which you don't have the rights to distribute the original data
 
 
 My set of tools let's you build a patcher and maintain it with ease, saving you time and letting your customers have a reliable way to install your modifications. Building a reliable way for them to interact with your products.
 
-The updater tool let's you maintain your modifications if the original creator updates their moddel.
+The updater tool let's you maintain your modifications if the original creator updates their model.
 
 An option is also avaliable to automate the generation of localized descriptions for your storefronts
 
@@ -33,9 +33,9 @@ Tool used mainly by the avatar creators from [VRCFT](https://github.com/benaclej
 
 A Unity project
 
-A 3D moddel
+A 3D model
 
-A modification of that 3D moddel
+A modification of that 3D model
 
 ## How to use 😎
   
@@ -49,11 +49,11 @@ A modification of that 3D moddel
 - Acces the builder in your toolbar at
 `Tools/Hash/EditDistributor/Builder`
 
-- Drag and drop the prefab of the original moddel
+- Drag and drop the prefab of the original model
 
-- Drag and drop the prefab of the modified moddel
+- Drag and drop the prefab of the modified model
 
-	- (optional) change the distribution name if you don't want to use the name of the original moddel
+	- (optional) change the distribution name if you don't want to use the name of the original model
 
 - Enter your name
 
@@ -71,12 +71,12 @@ A modification of that 3D moddel
 
 Number| Name| Description
 -------- | -----| -----
-1| Original model slot| A slot to drag and drop a prefab of the original moddel into (requires the moddel to have an avatar component for now) |
-2| Modified moddel slot |  A slot to drag and drop a prefab of your modified moddel into (requires the moddel to have an avatar component for now) |
-3|Owerwrite Checkbox  | Will use the name of your modified moddel to created the patcher script and your menu bar if left unckecked. Will use the OverwriteName if checked
+1| Original model slot| A slot to drag and drop a prefab of the original model into (requires the moddel to have an avatar component for now) |
+2| Modified model slot |  A slot to drag and drop a prefab of your modified model into (requires the moddel to have an avatar component for now) |
+3|Owerwrite Checkbox  | Will use the name of your modified model to created the patcher script and your menu bar if left unckecked. Will use the OverwriteName if checked
 4| OverwriteName  | Name that will be used for the patcher script and hotbar menu if the overwrite checkbox is ticked
 5| Your Name | Will be used to organize your patchers in the menu bar
-6| Original package name | Will be used to let your user know which version of the original moddel they're expected to import. very crutial to give them some sort of version number here that will resonate with your user.
+6| Original package name | Will be used to let your user know which version of the original model they're expected to import. very crutial to give them some sort of version number here that will resonate with your user.
 7| Generate descriptions checkbox | (`Optional`) Will enable the description generator feature
 8| desctiption folder selection button | This button will prompt you to select a desctiption folder. All txt files will be scanned and copied in the destination folder after hitting patch if the Generate descriptions checkbox is checked
 9| destination folder selection button | This button will prompt you to select a desctiption folder. all files found in the description folder will be coppied in this directory with the tags changed
@@ -112,9 +112,9 @@ You may want to update and maintain your modifications in the future, instead of
 
 Number| Name| Description
 -------- | -----| -----
-1| Updated original model slot| A slot to drag and drop a prefab of the updated original moddel into (requires the moddel to have an avatar component for now) |
-2| Updated Modified moddel slot |  A slot to drag and drop a prefab of your updated modified moddel into (requires the moddel to have an avatar component for now) |
-3| Updated original package name | Will be used to let your user know which version of the original moddel they're expected to import. very crutial to give them some sort of version number here that will resonate with your user.
+1| Updated original model slot| A slot to drag and drop a prefab of the updated original model into (requires the model to have an avatar component for now) |
+2| Updated Modified model slot |  A slot to drag and drop a prefab of your updated modified model into (requires the model to have an avatar component for now) |
+3| Updated original package name | Will be used to let your user know which version of the original model they're expected to import. very crutial to give them some sort of version number here that will resonate with your user.
 4| Generate descriptions checkbox | (`Optional`) Will enable the description generator feature
 5| desctiption folder selection button | This button will prompt you to select a desctiption folder. All txt files will be scanned and copied in the destination folder after hitting patch if the Generate descriptions checkbox is checked
 6| destination folder selection button | This button will prompt you to select a desctiption folder. all files found in the description folder will be coppied in this directory with the tags changed
