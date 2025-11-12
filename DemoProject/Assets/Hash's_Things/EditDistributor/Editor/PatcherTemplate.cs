@@ -31,12 +31,12 @@ public class PatcherTemplate : EditorWindow
         GUIStyle boldLabelStyle = new GUIStyle(EditorStyles.boldLabel);
         using (new GUILayout.VerticalScope(EditorStyles.helpBox))
         {
-            
+
             EditorGUILayout.Space(20);
 
             EditorGUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
-            GUILayout.Label(@"DistributionCreator" + "'s "+ @"AvatarName", boldLabelStyle);
+            GUILayout.Label(@"DistributionCreator" + "'s " + @"AvatarName", boldLabelStyle);
             GUILayout.FlexibleSpace();
             EditorGUILayout.EndHorizontal();
 
@@ -45,12 +45,12 @@ public class PatcherTemplate : EditorWindow
             string currentCustomfbxPath = Path.Combine(Application.dataPath, CustomfbxPath);
 
             string hpatchz = "";
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) hpatchz = Path.Combine(GoUpNDirs(currentCustomfbxPath, 2), "patcher", "data", "hdiff", "hpatchz", "Windows", "hpatchz.exe");
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux)) hpatchz = Path.Combine(GoUpNDirs(currentCustomfbxPath, 2), "patcher", "data", "hdiff", "hpatchz", "Linux", "hpatchz");
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX)) hpatchz = Path.Combine(GoUpNDirs(currentCustomfbxPath, 2), "patcher", "data", "hdiff", "hpatchz", "Mac", "hpatchz");
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) hpatchz = Path.Combine(GoUpNDirs(currentCustomfbxPath, 2), "Patcher", "Data", "hdiff", "hpatchz", "Windows", "hpatchz.exe");
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux)) hpatchz = Path.Combine(GoUpNDirs(currentCustomfbxPath, 2), "Patcher", "Data", "hdiff", "hpatchz", "Linux", "hpatchz");
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX)) hpatchz = Path.Combine(GoUpNDirs(currentCustomfbxPath, 2), "Patcher", "Data", "hdiff", "hpatchz", "Mac", "hpatchz");
 
-            string FBXDiffFile = Path.Combine(GoUpNDirs(currentCustomfbxPath, 2), "patcher", "data", "DiffFiles", Path.GetFileNameWithoutExtension(OGfbxPath).Replace(" ", "_") + ".hdiff");
-            string MetaDiffFile = Path.Combine(GoUpNDirs(currentCustomfbxPath, 2), "patcher", "data", "DiffFiles", Path.GetFileNameWithoutExtension(OGfbxPath).Replace(" ", "_") + "Meta.hdiff");
+            string FBXDiffFile = Path.Combine(GoUpNDirs(currentCustomfbxPath, 2), "Patcher", "Data", "DiffFiles", Path.GetFileNameWithoutExtension(OGfbxPath).Replace(" ", "_") + ".hdiff");
+            string MetaDiffFile = Path.Combine(GoUpNDirs(currentCustomfbxPath, 2), "Patcher", "Data", "DiffFiles", Path.GetFileNameWithoutExtension(OGfbxPath).Replace(" ", "_") + "Meta.hdiff");
             string fbxfolder = GoUpNDirs(currentCustomfbxPath, 1);
 
             if (Debug) ShowDebugMessages(currentOGfbxPath, FBXDiffFile, MetaDiffFile, currentCustomfbxPath);
@@ -117,8 +117,10 @@ public class PatcherTemplate : EditorWindow
                     else
                     {
                         debugMessage = 6;//it workey
-                        DeleteAllFilesInDirectory(Path.Combine(GoUpNDirs(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), 1), "LocalLow", "VRChat", "VRChat", "OSC"));
-
+                        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                        {
+                            DeleteAllFilesInDirectory(Path.Combine(GoUpNDirs(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), 1), "LocalLow", "VRChat", "VRChat", "OSC"));
+                        }
                     }
 
                     arguments = "\"" + currentOGfbxPath + "\" \"" + FBXDiffFile + "\" \"" + currentCustomfbxPath + "\"";
@@ -131,7 +133,10 @@ public class PatcherTemplate : EditorWindow
                     else
                     {
                         debugMessage = 6;//it workey
-                        DeleteAllFilesInDirectory(Path.Combine(GoUpNDirs(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), 1), "LocalLow", "VRChat", "VRChat", "OSC"));
+                        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                        {
+                            DeleteAllFilesInDirectory(Path.Combine(GoUpNDirs(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), 1), "LocalLow", "VRChat", "VRChat", "OSC"));
+                        }
                     }
 
 
