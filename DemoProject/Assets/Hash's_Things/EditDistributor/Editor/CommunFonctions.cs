@@ -38,22 +38,19 @@ namespace EditDistributor
 
         public static void AddCenteredLabel(string mymessage)
         {
-            EditorGUILayout.BeginHorizontal();
-            GUILayout.FlexibleSpace();
-            EditorGUILayout.LabelField(mymessage);
-            GUILayout.FlexibleSpace();
-            EditorGUILayout.EndHorizontal();
+            GUIStyle wrapStyle = new GUIStyle(EditorStyles.label);
+            wrapStyle.wordWrap = true;
+            wrapStyle.alignment = TextAnchor.MiddleCenter;
+            EditorGUILayout.LabelField(mymessage, wrapStyle, GUILayout.ExpandWidth(true));
         }
 
 
         public static void AddBoldCenteredLabel(string mymessage)
         {
             GUIStyle boldLabelStyle = new GUIStyle(EditorStyles.boldLabel);
-            EditorGUILayout.BeginHorizontal();
-            GUILayout.FlexibleSpace();
-            EditorGUILayout.LabelField(mymessage, EditorStyles.boldLabel);
-            GUILayout.FlexibleSpace();
-            EditorGUILayout.EndHorizontal();
+            boldLabelStyle.wordWrap = true;
+            boldLabelStyle.alignment = TextAnchor.MiddleCenter;
+            EditorGUILayout.LabelField(mymessage, boldLabelStyle, GUILayout.ExpandWidth(true));
         }
 
 
