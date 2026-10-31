@@ -20,7 +20,7 @@ public class PatcherTemplate : EditorWindow
     public static void ShowWindow()
     {
         PatcherTemplate window = GetWindow<PatcherTemplate>(@"NameOfWindow");
-        if (!Debug) window.maxSize = new Vector2(442, 223);
+        if (!Debug) window.maxSize = new Vector2(900, 400);
         if (Debug) window.maxSize = new Vector2(1000, 700);
         window.Show();
     }
@@ -31,12 +31,12 @@ public class PatcherTemplate : EditorWindow
         GUIStyle boldLabelStyle = new GUIStyle(EditorStyles.boldLabel);
         using (new GUILayout.VerticalScope(EditorStyles.helpBox))
         {
-
+            
             EditorGUILayout.Space(20);
 
             EditorGUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
-            GUILayout.Label(@"DistributionCreator" + "'s " + @"AvatarName", boldLabelStyle);
+            GUILayout.Label(@"DistributionCreator" + "'s "+ @"AvatarName", boldLabelStyle);
             GUILayout.FlexibleSpace();
             EditorGUILayout.EndHorizontal();
 
@@ -60,7 +60,7 @@ public class PatcherTemplate : EditorWindow
             EditorGUILayout.Space(20);
             if (!File.Exists(currentOGfbxPath))
             {
-                AddBoldCenteredLabel("Please make sure your have the original FBX in: " + GoUpNDirs(OGfbxPath, 1));
+                AddBoldCenteredLabel("Please make sure you have the " + Path.GetFileName(OGfbxPath) + " in: " + Path.Combine("Assets", Path.GetDirectoryName(OGfbxPath)));
                 debugMessage = 1;
             }
             else if (File.Exists(currentCustomfbxPath))
@@ -117,10 +117,8 @@ public class PatcherTemplate : EditorWindow
                     else
                     {
                         debugMessage = 6;//it workey
-                        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-                        {
-                            DeleteAllFilesInDirectory(Path.Combine(GoUpNDirs(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), 1), "LocalLow", "VRChat", "VRChat", "OSC"));
-                        }
+                        DeleteAllFilesInDirectory(Path.Combine(GoUpNDirs(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), 1), "LocalLow", "VRChat", "VRChat", "OSC"));
+
                     }
 
                     arguments = "\"" + currentOGfbxPath + "\" \"" + FBXDiffFile + "\" \"" + currentCustomfbxPath + "\"";
@@ -133,10 +131,7 @@ public class PatcherTemplate : EditorWindow
                     else
                     {
                         debugMessage = 6;//it workey
-                        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-                        {
-                            DeleteAllFilesInDirectory(Path.Combine(GoUpNDirs(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), 1), "LocalLow", "VRChat", "VRChat", "OSC"));
-                        }
+                        DeleteAllFilesInDirectory(Path.Combine(GoUpNDirs(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), 1), "LocalLow", "VRChat", "VRChat", "OSC"));
                     }
 
 
@@ -283,7 +278,10 @@ public class PatcherTemplate : EditorWindow
 
     private void AddBoldCenteredLabel(string mymessage)
     {
-        EditorGUILayout.LabelField(mymessage, EditorStyles.boldLabel);
+        GUIStyle wrapStyle = new GUIStyle(EditorStyles.boldLabel);
+        wrapStyle.wordWrap = true;
+        wrapStyle.alignment = TextAnchor.MiddleCenter;
+        EditorGUILayout.LabelField(mymessage, wrapStyle, GUILayout.ExpandWidth(true));
     }
 
     private void ShowDebugMessages(string currentOGfbxPath, string FBXDiffFile, string MetaDiffFile, string currentCustomfbxPath)
