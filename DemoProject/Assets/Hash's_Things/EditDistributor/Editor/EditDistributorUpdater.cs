@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using System;
@@ -116,7 +116,7 @@ namespace EditDistributor
                             }
                             else
                             {
-                                patcherToUpdate = Path.Combine(CommunFonctions.GoUpNDirs(CustomfbxPath, 2), "Patcher", "Editor", Path.GetFileNameWithoutExtension(CustomfbxPath) + "_Patcher.cs");
+                                patcherToUpdate = FindPatcherScript(CustomfbxPath);
                             }
                         }
                         else
@@ -326,6 +326,20 @@ namespace EditDistributor
 
 
         
+
+        private static string FindPatcherScript(string customfbxPath)
+        {
+            string patcherEditorDir = Path.Combine(CommunFonctions.GoUpNDirs(customfbxPath, 2), "Patcher", "Editor");
+
+            if (!Directory.Exists(patcherEditorDir))
+            {
+                return "";
+            }
+
+            string[] matches = Directory.GetFiles(patcherEditorDir, "*_Patcher.cs");
+
+            return matches.Length > 0 ? matches[0] : "";
+        }
 
         private static void ReplaceLineInFile(string filePath, string searchStartsWith, string replacementLine)
         {
